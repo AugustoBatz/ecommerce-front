@@ -1,7 +1,8 @@
+//Modulos de angular 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
+//Componentes 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/general/navbar/navbar.component';
 import { HeaderComponent } from './components/general/header/header.component';
@@ -10,6 +11,10 @@ import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { EditInfoComponent } from './components/user/edit-info/edit-info.component';
 import { PurchaseHistoryComponent } from './components/user/purchase-history/purchase-history.component';
+
+//Servicios 
+import { APIService } from './services/backend/api.service';
+import {DataService} from './services/data/data.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,7 @@ import { PurchaseHistoryComponent } from './components/user/purchase-history/pur
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [APIService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
