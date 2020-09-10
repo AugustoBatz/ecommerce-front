@@ -1,0 +1,44 @@
+Aquí irán los modelos para los datos que se reciban de la API 
+los modelos tienen que tener la estructura del JSON que nos devuelva la API 
+
+Ejemplo de como se contruye un modelo: 
+
+se crea un archvio de typescript, en este caso books.ts, la estructura del archvio es la siguiente: 
+
+export interface Book {
+    id?: number; 
+    title?<---el signo de interrogacion indica que el parametro es opcional: string; <----si no sabemos el tipo de un dato podemos ponerlo como any 
+    description?: string; 
+    image?: string; 
+    created_at?: Date;
+}
+
+ejemplo de implementación 
+importamos el modelo en el archivo.ts del componente en que vayamos a requerirlo 
+import { Book } from 'src/app/models/book';
+
+creamos la variable book dentro de la clase, le decimos que será del tipo modelo, e inicializamos los valores 
+
+export class EditbookformComponent implements OnInit {
+    book: Book = {
+        id: 0,
+        title: '', 
+        description: '',
+        image: '',
+        created_at: new Date()
+
+    };
+
+Al momento de hacer una petición: 
+
+  this.bookService.getBook(params.id).subscribe(
+        res =>{
+          console.log(res); 
+          this.book = res; <------------Asignamos la respuesta de la API a la variable que creamos 
+          console.log(this.book.created_at, 'Fecha')
+          
+        },
+        err => console.error(err)
+      ); 
+
+    
