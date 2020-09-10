@@ -9,6 +9,7 @@ import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { EditInfoComponent } from './components/user/edit-info/edit-info.component';
+import { PurchaseHistoryComponent } from './components/user/purchase-history/purchase-history.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EditInfoComponent } from './components/user/edit-info/edit-info.compone
     SignInComponent,
     SignUpComponent,
     ProfileComponent,
-    EditInfoComponent
+    EditInfoComponent,
+    PurchaseHistoryComponent
   ],
   imports: [
     BrowserModule,
