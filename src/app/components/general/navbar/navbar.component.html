@@ -1,1 +1,28 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-dark bg-dark navbar-expand-md">
+  <a class="navbar-brand ml-5" routerLink="/home">Tienda</a>
+  <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarToggler">
+    <div class="navbar-nav ml-auto">
+    <a class="nav-link" routerLink="/home">Inicio</a>
+    <a class="nav-link" routerLink="/store">Cátalogo</a>
+    <a class="nav-link" routerLink="/promo">Promociones</a>
+    <a class="nav-link" routerLink="/about">Sobre Nosotros</a>
+    <a class="nav-link mr-2" routerLink="/contact-us">Contáctenos</a>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar">
+      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+    <div class="dropdown mr-5 ml-2">
+       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Ingresar
+      </button>
+      <div class="dropdown-menu mr-5" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item mr-5" routerLink="/sign-in">Iniciar Sesion</a>
+        <a class="dropdown-item" routerLink="/sign-up">Registrarse</a>
+      </div>
+    </div>
+  </div>
+  </div>
+</nav>
