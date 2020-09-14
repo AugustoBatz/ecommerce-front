@@ -13,10 +13,13 @@ import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { EditInfoComponent } from './components/user/edit-info/edit-info.component';
 import { PurchaseHistoryComponent } from './components/user/purchase-history/purchase-history.component';
-
+import { ContactUsComponent } from './components/general/contact-us/contact-us.component';
+import { HomeComponent } from './components/general/home/home.component';
+import { AboutComponent } from './components/general/about/about.component';
 //Servicios 
 import { APIService } from './services/backend/api.service';
 import {DataService} from './services/data/data.service';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {DataService} from './services/data/data.service';
     SignUpComponent,
     ProfileComponent,
     EditInfoComponent,
-    PurchaseHistoryComponent
+    PurchaseHistoryComponent,
+    ContactUsComponent,
+    HomeComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
