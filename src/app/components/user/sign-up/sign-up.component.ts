@@ -18,7 +18,11 @@ export class SignUpComponent implements OnInit {
       name: '',
       lastName: '',
       password: '',
-      phone: ''
+      phone: '',
+      address: '',
+      city: '',
+      country: '',
+      zipCode: ''
     })
 
     this.signUpForm.valueChanges.subscribe(console.log)

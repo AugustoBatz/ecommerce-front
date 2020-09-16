@@ -2,14 +2,21 @@
     Value: {{ signUpForm.value | json }}
     <hr>
     <div id="register-form">
-        <div id="register-form-title">
+        <div id= "register-form-title">
             <h2>Registro</h2>
         </div>
+        <h5><u>Datos</u></h5>
         <input class="signUpInput" type="text" placeholder="Nombre" formControlName="name">
         <input class="signUpInput" type="text" placeholder="Apellido" formControlName="lastName">
         <input class="signUpInput" type="email" placeholder="Correo Electrónico" formControlName="email">
         <input class="signUpInput" type="password" placeholder="Contraseña" formControlName="password">
         <input class="signUpInput" type="text" placeholder="Telefono" formControlName="phone">
+        <h5><u>Dirección</u></h5>
+        <input class="signUpInput" type="text" placeholder="Dirección" formControlName="address">
+        <input class="signUpInput" type="text" placeholder="Código de Área" formControlName="zipCode">
+        <input class="signUpInput" type="text" placeholder="País" formControlName="country">
+        <input class="signUpInput" type="text" placeholder="Ciudad" formControlName="city">
         <button class="signUpButton">Registrarme</button>
+        
     </div>
 </form>
