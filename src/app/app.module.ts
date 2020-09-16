@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //Componentes 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/general/navbar/navbar.component';
@@ -19,6 +19,12 @@ import { AboutComponent } from './components/general/about/about.component';
 //Servicios 
 import { APIService } from './services/backend/api.service';
 import {DataService} from './services/data/data.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
@@ -39,7 +45,14 @@ import {DataService} from './services/data/data.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NoopAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatChipsModule
   ],
   providers: [APIService, DataService],
   bootstrap: [AppComponent]

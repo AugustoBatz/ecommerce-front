@@ -1,1 +1,15 @@
-<p>sign-up works!</p>
+<form [formGroup]="signUpForm">
+    Value: {{ signUpForm.value | json }}
+    <hr>
+    <div id="register-form">
+        <div id="register-form-title">
+            <h2>Registro</h2>
+        </div>
+        <input class="signUpInput" type="text" placeholder="Nombre" formControlName="name">
+        <input class="signUpInput" type="text" placeholder="Apellido" formControlName="lastName">
+        <input class="signUpInput" type="email" placeholder="Correo Electrónico" formControlName="email">
+        <input class="signUpInput" type="password" placeholder="Contraseña" formControlName="password">
+        <input class="signUpInput" type="text" placeholder="Telefono" formControlName="phone">
+        <button class="signUpButton">Registrarme</button>
+    </div>
+</form>
