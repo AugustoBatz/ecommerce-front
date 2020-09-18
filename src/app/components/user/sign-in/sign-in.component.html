@@ -1,1 +1,18 @@
-<p>sign-in works :D!</p>
+<div class="container mr-4 mt-5">
+    <form [formGroup]="signInForm">
+        Value: {{ this.login | json }}
+        <hr>
+        <div id="login-form">
+            <div id= "login-form-title">
+                <h2>Ingreso de usuario</h2>
+            </div>
+            <label>Correo Electrónico</label>
+            <input class="signUpInput" type="email" placeholder="Correo Electrónico" formControlName="email">
+            <label>Contraseña</label>
+            <input class="signUpInput" type="password" placeholder="Contraseña" formControlName="password">
+            <button class="btn btn-success mb-4" type="submit" [disabled]="signInForm.invalid">Ingresar</button>
+            
+        </div>
+    </form>
+    
+</div>
