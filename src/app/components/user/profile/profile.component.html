@@ -1,1 +1,71 @@
-<p>profile works!</p>
+<body>
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-4"><h2>Perfil</h2></div>
+    </div>
+    <br /><br />
+    <!-- Primer bloque -->
+    <form class="row container" id="principal-form">
+      <div class="col-sm-8">
+        <dl id="campos">
+          <dt>
+            <label>Nombre: </label>
+          <input type="text" PlaceHolder="user_name" id="data_label" disabled>
+          </dt>
+          <dt>
+            <label>Correo: </label>
+            <input type="text"  PlaceHolder="user_email" id="data_label" disabled>
+          </dt>
+          <dt>
+            <label>Teléfono:</label>
+            <input type="text"  PlaceHolder="user_phone" id="data_label" disabled>
+          </dt>
+          <dt>
+            <label>Dirección:</label>
+            <input type="text"  PlaceHolder="user_dir" id="data_label" disabled>
+          </dt>
+          <dt>
+            <label>Ciudad: </label>
+            <input type="text"  PlaceHolder="user_city" id="data_label" disabled>
+          </dt>
+          <dt>
+            <label>País:</label>
+            <input type="text"  PlaceHolder="user_country" id="data_label" disabled>
+          </dt>
+        </dl>
+      </div>
+
+      <div class="col-sm-4" id="photo">
+          <img src="../../../../assets/guest.png" alt="photo" id="photo">
+      </div> 
+
+      <div class="card">
+          <div class="card-header" id="card_title">Información de pago</div>
+          <div class="card-body">
+            <dl id="campos">
+              <dt>
+                <label>Nombre tarjeta:</label>
+                <input type="text"  PlaceHolder="user_name" id="card_label" disabled>
+              </dt>
+              <dt>
+                <label>No. tarjeta:</label>
+                <input type="number"  PlaceHolder="no_card" id="card_label" disabled>
+              </dt>
+              <dt>
+                <label>Fecha de expiración:</label>
+                <input type="date"  PlaceHolder="card_date" id="card_label" disabled>
+              </dt>
+              <dt>
+                <label>CV:</label>
+                <input type="number"  PlaceHolder="cv" id="card_label" disabled>
+              </dt>
+              <dt>
+                <label>Monto:</label>
+                <input type="number"  PlaceHolder="monto" id="card_label" disabled>
+              </dt>
+            </dl>
+          </div>
+        </div>
+    </form>
+  </div> 
+</body>   
