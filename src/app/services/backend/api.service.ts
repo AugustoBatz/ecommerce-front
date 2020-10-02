@@ -29,10 +29,14 @@ export class APIService {
     }
     logout() {
       localStorage.removeItem('auth_token');
+      localStorage.removeItem('user');
     }
    
     public get logIn(): boolean {
       return (localStorage.getItem('auth_token') !== null);
+    }
+    public get user(): string{
+      return localStorage.getItem('user');
     }
 
 }
