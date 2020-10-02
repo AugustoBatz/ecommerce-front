@@ -11,7 +11,7 @@ import { ActivatedRoute, Router} from '@angular/router';
 export class SignInComponent implements OnInit {
   signInForm: FormGroup; 
   login: Login;
-  correct_login: boolean = true; 
+  correct_login: boolean = true;
   constructor(private initForm: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute, private apiService: APIService) { }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class SignInComponent implements OnInit {
       (error: any) => {this.correct_login = false; this.signInForm.setValue({username: "", password: ""})});;
   }
   logged(){
-    return this.correct_login;
+    return this.apiService.logIn;
   }
 
 }
