@@ -1,9 +1,38 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Router } from '@angular/router';
+import {Signup} from '../../models/signup';
+import { Login } from 'src/app/models/login_request';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class APIService {
-  private API_URI;
-  constructor(private http: HttpClient) { }
+  API_URI = 'http://127.0.0.1:8000/api';
+  constructor(private http: HttpClient, private router: Router) { 
+    
+  }
+    saveUser(nuser: Signup){
+      let headers1 = new HttpHeaders();
+      headers1 = headers1.set('mock', 'False');
+      return this.http.post(this.API_URI + '/signup', nuser,{
+        headers: headers1
+      }); 
+    }
+    login_user(user: Login) {
+      let headers1 = new HttpHeaders();
+      headers1 = headers1.set('mock', 'False');
+      return this.http.post(this.API_URI + '/login', user,{
+        headers: headers1
+      }) 
+    }
+    logout() {
+      localStorage.removeItem('auth_token');
+    }
+   
+    public get logIn(): boolean {
+      return (localStorage.getItem('auth_token') !== null);
+    }
+
 }
