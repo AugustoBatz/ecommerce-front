@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {Login} from '../../../models/login_request'
+import {Login} from '../../../models/login_request'; 
+import {APIService} from '../../../services/backend/api.service';
+import { ActivatedRoute, Router} from '@angular/router';
+import {Signup} from '../../../models/signup';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -8,17 +11,29 @@ import {Login} from '../../../models/login_request'
 })
 export class SignInComponent implements OnInit {
   signInForm: FormGroup; 
-  login: Login
-
-  constructor(private initForm: FormBuilder) { }
+  login: Login;
+  correct_login: boolean = true; 
+  constructor(private initForm: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute, private apiService: APIService) { }
 
   ngOnInit(): void {
     this.signInForm = this.initForm.group({
-      email: ['', Validators.compose([Validators.email, Validators.required])],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     })
 
-    this.signInForm.valueChanges.subscribe(()=>{this.login = this.signInForm.value; console.log(this.login)})
+    this.signInForm.valueChanges.subscribe(()=>{this.login = this.signInForm.value;})
+  }
+  validar() {
+    this.apiService.login_user(this.login).subscribe((resp: any) => {
+      
+      this.router.navigate(['profile']);
+      localStorage.setItem('auth_token', resp.token);
+      
+      },
+      (error: any) => {this.correct_login = false; this.signInForm.setValue({username: "", password: ""})});;
+  }
+  logged(){
+    return this.correct_login;
   }
 
 }

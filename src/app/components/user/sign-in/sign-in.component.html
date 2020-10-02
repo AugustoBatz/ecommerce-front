@@ -1,18 +1,14 @@
-<div class="container mr-4 mt-5">
-    <form [formGroup]="signInForm">
-        Value: {{ this.login | json }}
-        <hr>
-        <div id="login-form">
+
+<form [formGroup]="signInForm">
+        <div class="container" id="login-form">
             <div id= "login-form-title">
                 <h2>Ingreso de usuario</h2>
             </div>
-            <label>Correo Electrónico</label>
-            <input class="signUpInput" type="email" placeholder="Correo Electrónico" formControlName="email">
+            <label>Nombre de usuario</label>
+            <input class="signUpInput" type="text" placeholder="Nombre de usuario" formControlName="username">
             <label>Contraseña</label>
             <input class="signUpInput" type="password" placeholder="Contraseña" formControlName="password">
-            <button class="btn btn-success mb-4" type="submit" [disabled]="signInForm.invalid">Ingresar</button>
-            
+            <button class="btn btn-success mb-4" type="submit" [disabled]="signInForm.invalid" (click)="validar()">Ingresar</button>
+            <label style="color: red;" *ngIf="!logged()">Datos de ingreso incorrectos</label>
         </div>
-    </form>
-    
-</div>
+</form>
