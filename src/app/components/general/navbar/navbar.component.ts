@@ -10,7 +10,6 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router: Router, private api: APIService) { }
   login = true;
-  user = "Cristian Archila";
   ngOnInit(): void {
   }
   public cambiar(){
@@ -23,5 +22,6 @@ export class NavbarComponent implements OnInit {
   logout(){
     this.api.logout();
   }
+  
 
 }
