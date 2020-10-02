@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
       
       this.router.navigate(['profile']);
       localStorage.setItem('auth_token', resp.token);
-      
+      localStorage.setItem('user', resp.username);
       },
       (error: any) => {this.correct_login = false; this.signInForm.setValue({username: "", password: ""})});;
   }
