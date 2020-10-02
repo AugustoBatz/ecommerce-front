@@ -15,12 +15,17 @@
       <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
     </form>
     <div class="dropdown mr-5 ml-2">
-       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="!logged()">
         Ingresar
       </button>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="logged()">
+        {{user}}
+      </button>
       <div class="dropdown-menu mr-5" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item mr-5" routerLink="/sign-in">Iniciar Sesion</a>
-        <a class="dropdown-item" routerLink="/sign-up">Registrarse</a>
+        <a class="dropdown-item mr-5" routerLink="/sign-in"*ngIf="!logged()">Iniciar Sesion</a>
+        <a class="dropdown-item" routerLink="/sign-up"*ngIf="!logged()">Registrarse</a>
+        <a class="dropdown-item mr-5" routerLink="/profile" *ngIf="logged()">Perfil</a>
+        <a class="dropdown-item" routerLink="/home"*ngIf="logged()" (click)="logout()">Cerrar Sesión</a>
       </div>
     </div>
   </div>
