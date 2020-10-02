@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-  <a class="navbar-brand ml-5" routerLink="/home">Tienda</a>
+  <a class="navbar-brand ml-5" routerLink="/home">Tienda <i class="fab fa-shopify"></i></a>
   <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -16,16 +16,16 @@
     </form>
     <div class="dropdown mr-5 ml-2">
        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="!logged()">
-        Ingresar
+        <i class="fas fa-address-card"></i> Ingresar
       </button>
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="logged()">
-        {{user}}
+      <button class="btn btn-secondary dropdown-toggle expand" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="logged()">
+        <i class="fas fa-user-circle"></i> {{this.api.user}} 
       </button>
       <div class="dropdown-menu mr-5" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item mr-5" routerLink="/sign-in"*ngIf="!logged()">Iniciar Sesion</a>
-        <a class="dropdown-item" routerLink="/sign-up"*ngIf="!logged()">Registrarse</a>
-        <a class="dropdown-item mr-5" routerLink="/profile" *ngIf="logged()">Perfil</a>
-        <a class="dropdown-item" routerLink="/home"*ngIf="logged()" (click)="logout()">Cerrar Sesión</a>
+        <a class="dropdown-item mr-5" routerLink="/sign-in"*ngIf="!logged()"> <i class="fas fa-sign-in-alt"></i> Iniciar Sesion</a>
+        <a class="dropdown-item" routerLink="/sign-up"*ngIf="!logged()"> <i class="fas fa-user-plus"></i> Registrarse </a>
+        <a class="dropdown-item mr-5" routerLink="/profile" *ngIf="logged()"> <i class="fas fa-user"></i> Perfil</a>
+        <a class="dropdown-item" routerLink="/home"*ngIf="logged()" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
       </div>
     </div>
   </div>
