@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Login} from '../../../models/login_request'; 
 import {APIService} from '../../../services/backend/api.service';
 import { ActivatedRoute, Router} from '@angular/router';
-import {Signup} from '../../../models/signup';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
