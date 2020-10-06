@@ -29,7 +29,8 @@ export class SignInComponent implements OnInit {
       localStorage.setItem('auth_token', resp.token);
       localStorage.setItem('user', resp.username);
       },
-      (error: any) => {this.correct_login = false; this.signInForm.setValue({username: "", password: ""})});;
+      (error: any) => {this.correct_login = false; this.signInForm.setValue({username: "", password: ""})});
+      
   }
   logged(){
     return this.apiService.logIn;
