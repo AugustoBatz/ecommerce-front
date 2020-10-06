@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 import {Signup} from '../../models/signup';
 import { Login } from 'src/app/models/login_request';
+import { DataService } from '../data/data.service';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { Login } from 'src/app/models/login_request';
 })
 export class APIService {
   API_URI = 'http://127.0.0.1:8000/api';
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(private http: HttpClient, private router: Router, private data: DataService) { 
     
   }
     saveUser(nuser: Signup){
@@ -30,6 +31,14 @@ export class APIService {
     logout() {
       localStorage.removeItem('auth_token');
       localStorage.removeItem('user');
+      this.data.resetUser();
+    }
+    userData(){
+      let headers1 = new HttpHeaders();
+      headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('auth_token'));
+      return this.http.get(this.API_URI + '/user/profile', {
+        headers: headers1
+      });
     }
    
     public get logIn(): boolean {
