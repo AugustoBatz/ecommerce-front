@@ -1,1 +1,24 @@
-<p>edit-info works!</p>
+
+<form [formGroup]="editForm">
+    Value: {{ editForm.value | json }}
+    <hr>
+    <div class="container" id="edit-form" >
+        <div id= "edit-form-title">
+            <h2>Editar Perfil</h2>
+        </div>
+        <h5><u>Datos</u></h5>
+        <input class="editInput" type="text" placeholder="Nombre" formControlName="first_name">
+        <input class="editInput" type="text" placeholder="Apellido" formControlName="last_name">
+        <input class="editInput" type="email" placeholder="Correo Electrónico" formControlName="email">
+        <input class="editInput" type="password" id="password" placeholder="Contraseña" formControlName="password">
+        <input class="editInput" type="password" id="confirmPassword" placeholder="Repetir contraseña" formControlName="confirmPassword">
+        <label class="error" *ngIf="!this.match">Las contraseñas no coinciden</label>
+        <input class="editInput" type="text" placeholder="Telefono" formControlName="phone">
+        <h5><u>Dirección</u></h5>
+        <input class="editInput" type="text" placeholder="Dirección" formControlName="address_a">
+        <input class="editInput" type="text" placeholder="Código de Área" formControlName="address_b">
+        <input class="editInput" type="text" placeholder="Nombre de Usuario" formControlName="username">
+        <button class="editButton" [disabled]="editForm.invalid" (click)="modificar()">Actualizar Datos</button>
+        
+    </div>
+</form>
