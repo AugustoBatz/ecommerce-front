@@ -6,6 +6,7 @@ import {  UsersService} from "src/app/components/user/profile/user.service";
 import { APIService } from 'src/app/services/backend/api.service';
 import { User} from '../../../models/user';
 import { DataService } from 'src/app/services/data/data.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,13 +17,9 @@ import { DataService } from 'src/app/services/data/data.service';
 export class ProfileComponent implements OnInit {
   profile: Profile;
   users: any;
-  constructor( public usersService: UsersService, private apiService: APIService, public data: DataService ) { }
+  constructor( public usersService: UsersService, private apiService: APIService, public data: DataService, private router: Router ) { }
 
   ngOnInit() {
-    this.usersService.getUsers().subscribe(data => {
-      this.users = data;
-      console.log(data);
-    });
     this.getUser();
   } 
   getUser(){
@@ -30,10 +27,14 @@ export class ProfileComponent implements OnInit {
       this.apiService.userData().subscribe(
         (res: User) => {
           this.data.set_user(res); 
-          console.log(this.data.user);
         }
           , 
-        err => console.log(err)
+        err => 
+        {
+          this.apiService.logout();
+          this.router.navigate(['sign-in']);
+          alert("Su sesión ha caducado, por favor vuelva a iniciar sesión");
+        }
       ); 
     }
   }

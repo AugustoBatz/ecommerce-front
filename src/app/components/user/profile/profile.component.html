@@ -1,14 +1,13 @@
 <body>
   <div class="container">
-    <div class="row">
-        <div class="col-xs-4"><h2>Perfil</h2></div>
-    </div>
+    <h2>Perfil</h2><br>
     <br /><br />
     <!-- Primer bloque -->
     <form class="row container" id="principal-form">
       <div class="col-sm-8">
         <dl id="campos">
           <h2 style="text-align: center;">{{this.data.user.username}}</h2>
+          <a routerLink="/profile/edit"><label style="text-align: center;">Modificar usuario <i class="fas fa-edit"></i></label></a>
           <dt>
             <label>Nombre: </label>
             <p>{{this.data.user.first_name}} {{this.data.user.last_name}}<p>
