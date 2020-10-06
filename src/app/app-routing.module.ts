@@ -31,7 +31,7 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent
   },{
-    path: 'edit',
+    path: 'profile/edit',
     component: EditInfoComponent
   },{
     path: 'about',
