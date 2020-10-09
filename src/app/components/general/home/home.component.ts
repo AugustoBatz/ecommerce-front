@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import lozad from 'lozad';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+    observer.observe();
   }
 
 }
