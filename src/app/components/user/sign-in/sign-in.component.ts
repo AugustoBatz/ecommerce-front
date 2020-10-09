@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
 
     this.signInForm.valueChanges.subscribe(()=>{this.login = this.signInForm.value;})
   }
-  validar() {
+  validation() {
     this.apiService.login_user(this.login).subscribe((resp: any) => {
       
       this.router.navigate(['profile']);
