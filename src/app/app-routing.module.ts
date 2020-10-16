@@ -9,6 +9,9 @@ import { PurchaseHistoryComponent } from './components/user/purchase-history/pur
 import { ContactUsComponent } from './components/general/contact-us/contact-us.component';
 import { HomeComponent } from './components/general/home/home.component';
 import { AboutComponent } from './components/general/about/about.component';
+import {AddProductComponent} from './components/admin/add-product/add-product.component';
+import { AdminSignInComponent } from './components/admin/admin-sign-in/admin-sign-in.component';
+import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 
 const routes: Routes = [
   {
@@ -39,6 +42,16 @@ const routes: Routes = [
   },{
     path: 'contact-us',
     component: ContactUsComponent
+  },{
+    path: 'admin/add-product',
+    component: AddProductComponent
+  },{
+    path: 'admin/sign-in',
+    component: AdminSignInComponent
+  },{
+    path: 'admin',
+    component: AdminHomeComponent,
+    pathMatch: 'full'
   }];
 
 @NgModule({
