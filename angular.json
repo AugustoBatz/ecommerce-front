@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "Proyecto"
+  "defaultProject": "Proyecto",
+  "cli": {
+    "analytics": "5ab12f55-bf3f-400f-9ee4-1154258aec00"
+  }
 }
