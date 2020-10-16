@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="productForm">
+        <div class="container" id="product-form" >
+            <div id= "product-form-title">
+                <h2>Agregar Producto</h2>
+            </div>
+            <h5><u>Datos</u></h5>
+            <input class="productInput" type="text" placeholder="Nombre del producto" formControlName="name">
+            <input class="productInput" type="text" placeholder="Código" formControlName="code">
+            <input class="productInput" type="text" placeholder="Categoría" formControlName="category">
+            <input class="productInput" type="text" placeholder="Marca" formControlName="brand">
+            <!---<div class="form-group">
+                <label for="selectBrand" style="text-align: center;">Marca</label>
+                <select class="form-control product input" style="width: 100%;" id="sbrand" name="sbrand" #sbrand (change)="selectedBrand(sbrand.options[sbrand.options.selectedIndex].text)">
+                  <option style="max-width: 80%; width: 80%;" *ngFor="let brand of brands">{{brand}}</option>
+                </select>
+                <label style="text-align: center;">{{selected_brand}}</label>
+              </div>--->
+            <input class="productInput" type="file" (change)="onFileSelected($event)" accept=".png, .jpg, .jpeg">
+            <button class="btn btn-warning mb-4" [disabled]="productForm.invalid" (click)="insertProduct()">Agregar Producto</button>
+            <img class="img-thumbnail" [src]="url">
+            <br> 
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <div class="row" id="sub-products" *ngIf="product_exist()">
+        <form [formGroup]="sub_productForm" >
+          Value: {{ sub_productForm.value | json }}
+          <hr>
+          <div class="container" id="product-form" >
+              <div id= "product-form-title">
+                  <h2>Agregar Sub-Producto</h2>
+              </div>
+              <input class="productInput" type="text" placeholder="Color del producto" formControlName="color">
+              <input class="productInput" type="text" placeholder="Talla del producto" formControlName="size">
+              <label>Precio: Q.<input class="productInput" type="text" placeholder="Precio del producto" formControlName="price"></label>
+              <button class="btn btn-warning mb-4" [disabled]="sub_productForm.invalid" (click)="addSubProduct()">Agregar Sub-Producto</button>
+              <br> 
+          </div>
+        </form>
+      </div>
+      <div class="row" id="stock" *ngIf="product_exist()">
+        <form [formGroup]="sub_productForm">
+          <hr>
+          <div class="container" id="product-form" >
+              <div id= "product-form-title">
+                  <h2>Definir Stock</h2>
+              </div>
+              <ul class="list-unstyled">
+                <li *ngFor="let sproduct of sub_products">
+                  <p style="text-align: center;">{{sproduct.code_product}}-{{sproduct.size}}-{{sproduct.color}}</p>
+                  <input class="productInput" type="text" placeholder="Cantidad">
+                  <input class="productInput" type="text" placeholder="Precio">
+                  <button class="btn btn-warning mb-4" [disabled]="sub_productForm.invalid" (click)="addSubProduct()">Agregar a Stock</button>
+                </li>
+
+              </ul>       
+              <br> 
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
