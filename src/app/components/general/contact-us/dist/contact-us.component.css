@@ -1,0 +1,48 @@
+#principal-form {
+  text-align: center;
+  margin: 5px;
+  padding: 15px;
+}
+
+.subtitle {
+  font-weight: bold;
+  font-size: medium;
+}
+
+.info {
+  font-weight: normal;
+  font-size: medium;
+}
+
+.input-style {
+  font-weight: normal;
+  font-size: medium;
+  width: 60%;
+  height: 25px;
+  text-align: center;
+  border-radius: 5px;
+  border-width: thin medium thin medium;
+  border-color: #66CDAA;
+}
+
+.btn {
+  width: 60%;
+  background-color: #fcbf49;
+  border-color: #fcbf49;
+}
+.btn:hover {
+  background-color: #e6ac38;
+}
+
+.input-style.message {
+  height: 100px;
+}
+
+.title {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+label {
+  color: white;
+}
