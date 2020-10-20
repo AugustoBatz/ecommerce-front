@@ -12,4 +12,7 @@ export class AppComponent {
   admin_logged(){
     return this.adminService.logIn;
   }
+  public get admin_login(): boolean {
+    return this.adminService.admin_in;
+  }
 }
