@@ -13,6 +13,7 @@ import {AddProductComponent} from './components/admin/add-product/add-product.co
 import { AdminSignInComponent } from './components/admin/admin-sign-in/admin-sign-in.component';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
+import { AddStockComponent } from './components/admin/add-stock/add-stock.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,9 @@ const routes: Routes = [
   },{
     path: 'admin/product-list',
     component: ProductListComponent,
+  },{
+    path: 'admin/add-stock',
+    component: AddStockComponent,
   }];
 
 @NgModule({
