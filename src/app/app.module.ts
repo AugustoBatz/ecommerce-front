@@ -31,6 +31,7 @@ import {DataService} from './services/data/data.service';
 import { AdminserviceService } from './services/admin/adminservice.service';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
+import { AddStockComponent } from './components/admin/add-stock/add-stock.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ProductListComponent } from './components/admin/product-list/product-li
     AdminSignInComponent,
     MenuComponent,
     AdminHomeComponent,
-    ProductListComponent
+    ProductListComponent,
+    AddStockComponent
   ],
   imports: [
     BrowserModule,
