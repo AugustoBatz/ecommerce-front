@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Signup } from 'src/app/models/signup';
 import { APIService } from 'src/app/services/backend/api.service';
+import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,9 +13,19 @@ import { APIService } from 'src/app/services/backend/api.service';
 export class SignUpComponent implements OnInit {
 
   signUpForm: FormGroup;
-  user: Signup;
+  user: Signup = {
+    first_name: '',
+    last_name: '',
+    phone: '',
+    address_a: '',
+    address_b: '',
+    email: '',
+    password: '',
+    username: ''
+  };
 
   constructor(
+    private data: DataService,
     private initForm: FormBuilder,
     private apiService: APIService
     ) { }
@@ -23,6 +34,7 @@ export class SignUpComponent implements OnInit {
     this.signUpForm = this.initForm.group({
       first_name: '',
       last_name: '',
+      username: '',
       phone: '',
       address_a: '',
       email: '',  
@@ -35,42 +47,65 @@ export class SignUpComponent implements OnInit {
 
   registerUser() {
     this.user = this.asignUserData(this.signUpForm);
-    this.apiService.saveUser(this.user).subscribe((resp: any) => {      
+    console.log(this.user);
+    this.apiService.saveUser(this.user).subscribe((resp: any) => {    
+          this.clearFullHtmlData();  
         },
         (error: any) => {
-          this.clearHtmlData();
+          console.log("ERROR: " + error );
+          this.clearErrorHtmlData();
         }
       );
       
   }
 
-  asignUserData(signUpForm: FormGroup) {    
-    let user : Signup;
+  asignUserData(singupForm : FormGroup) {    
+    let user : Signup = 
+    {
+      first_name: '',
+      last_name: '',
+      phone: '',
+      address_a: '',
+      address_b: '',
+      email: '',
+      password: '',
+      username: ''
+    };
 
-    user.email = signUpForm.controls['email'].value;
-    user.first_name = signUpForm.controls['first_name'].value;
-    user.last_name = signUpForm.controls['last_name'].value;
-    user.phone = signUpForm.controls['phone'].value;
-    user.address_a = signUpForm.controls['address_a'].value;
-    user.password = signUpForm.controls['password'].value;
-    user.address_b = signUpForm.controls['country'].value + ", " 
-        + signUpForm.controls['zip_code'].value + ", " + signUpForm.controls['city'].value;
+    user.email = singupForm.get('email').value;
+    user.username = singupForm.get('username').value;
+    user.first_name = singupForm.get('first_name').value;
+    user.last_name = singupForm.get('last_name').value;
+    user.phone = singupForm.get('phone').value;
+    user.address_a = singupForm.get('address_a').value;
+    user.password = singupForm.get('password').value;
+    user.address_b = singupForm.get('country').value + ", " 
+        + singupForm.get('zip_code').value + ", " + singupForm.get('city').value;
 
     return user;
   }
 
-  clearHtmlData() {
+  clearFullHtmlData() {
     this.signUpForm.setValue(
       {
-        first_name: "", 
-        last_name: "", 
-        phone: "", 
-        address_a: "", 
-        email:"", 
-        password:"",
-        city:"",
-        country:"",
-        zip_code:""
+        first_name: '', 
+        last_name: '', 
+        phone: '', 
+        username: '',
+        address_a: '', 
+        email:'', 
+        password:'', 
+        city:'', 
+        country:'', 
+        zip_code:''
+      }
+    )
+  }
+
+  clearErrorHtmlData() {
+    this.signUpForm.setValue(
+      {
+        password:''
       }
     )
   }
