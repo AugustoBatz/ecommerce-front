@@ -28,9 +28,7 @@
     <div class="col">
       <div class="row" id="sub-products" *ngIf="product_exist()">
         <form [formGroup]="sub_productForm" >
-          Value: {{ sub_productForm.value | json }}
-          <hr>
-          <div class="container" id="product-form" >
+          <div class="container" id="sproduct-form" >
               <div id= "product-form-title">
                   <h2>Agregar Sub-Producto</h2>
               </div>
@@ -43,18 +41,20 @@
         </form>
       </div>
       <div class="row" id="stock" *ngIf="product_exist()">
-        <form [formGroup]="sub_productForm">
+        <form [formGroup]="purchaseForm">
           <hr>
-          <div class="container" id="product-form" >
+          <div class="container" id="purchase-form" >
               <div id= "product-form-title">
                   <h2>Definir Stock</h2>
               </div>
               <ul class="list-unstyled">
-                <li *ngFor="let sproduct of sub_products">
-                  <p style="text-align: center;">{{sproduct.code_product}}-{{sproduct.size}}-{{sproduct.color}}</p>
-                  <input class="productInput" type="text" placeholder="Cantidad">
-                  <input class="productInput" type="text" placeholder="Precio">
-                  <button class="btn btn-warning mb-4" [disabled]="sub_productForm.invalid" (click)="addSubProduct()">Agregar a Stock</button>
+                <li *ngFor="let pdetail of purchase_details">
+                  <label style="text-align: center;">{{pdetail.product}} - {{pdetail.color}} - {{pdetail.size}}</label>
+                  <label for="quantity">Cantidad</label>
+                  <input class="productInput" type="text" placeholder="Cantidad" id="quantity" formControlName="quantity">
+                  <label for="cost">Costo</label>
+                  <input class="productInput" type="text" placeholder="Costo" id="cost" formControlName="cost">
+                  <button class="btn btn-warning" style="width: 100%;" [disabled]="purchaseForm.invalid" (click)="addPurchase(pdetail)">Agregar a Stock</button>
                 </li>
 
               </ul>       

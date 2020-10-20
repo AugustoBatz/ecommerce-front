@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/models/addproduct';
+import { Purchase } from 'src/app/models/purchasedetail';
+import { SProduct_Response } from 'src/app/models/sproduct_response';
 import { Sub_product } from 'src/app/models/sub_product';
 import { AdminserviceService } from 'src/app/services/admin/adminservice.service';
 
@@ -13,7 +15,7 @@ export class AddProductComponent implements OnInit {
   public selected_file;
   public sub_product: Sub_product;
   added_product: boolean = false;
-  sub_products:Sub_product[] = []; 
+  purchase_details:SProduct_Response[] = []; 
   productForm: FormGroup; 
   sub_productForm: FormGroup;
   purchaseForm: FormGroup;
@@ -44,6 +46,11 @@ export class AddProductComponent implements OnInit {
       size: ['', Validators.required],
       price: ['', Validators.required]
     });
+    this.purchaseForm = this.initForm.group({
+      id_detail_product: [0, Validators.required],
+      quantity: ['', Validators.required],
+      cost: ['', Validators.required]
+    });
     //this.productForm.valueChanges.subscribe(console.log)
 
   }
@@ -60,14 +67,12 @@ export class AddProductComponent implements OnInit {
           brand: this.productForm.controls['brand'].value,
           image: this.url
         })
-        console.log(this.url);
       }
     }
 
   }
   selectedBrand(text: string) {
     this.selected_brand = text;
-    console.log(this.selected_brand);
     this.productForm.setValue({
       name: this.productForm.controls['name'].value,
       code: this.productForm.controls['code'].value,
@@ -76,15 +81,26 @@ export class AddProductComponent implements OnInit {
       image: this.productForm.controls['image'].value
     })
   }
-  public handleFile(a){
-
+  addPurchase(subresponse: SProduct_Response){
+    let purchase: Purchase = {
+      id_detail_product: subresponse.id,
+      quantity: this.purchaseForm.controls['quantity'].value,
+      cost: this.purchaseForm.controls['cost'].value
+    }
+    this.adminService.insert_purchaseDetail(purchase).subscribe(
+      res=> {
+        this.purchaseForm.controls['quantity'].setValue('');
+        this.purchaseForm.controls['cost'].setValue('');
+      },
+      err=> console.log(err)
+    );
   }
   addSubProduct(){
     this.adminService.insert_subproduct(this.sub_productForm.value).subscribe(
-      res => 
+      (res: SProduct_Response) => 
       {
         console.log(res);
-        this.sub_products.push(this.sub_productForm.value);
+        this.purchase_details.push(res);
       }
     );
     
