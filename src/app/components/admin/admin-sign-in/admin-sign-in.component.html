@@ -8,7 +8,7 @@
         <input class="signUpInput" type="text" placeholder="Nombre de usuario" formControlName="username">
         <label>Contraseña</label>
         <input class="signUpInput" type="password" placeholder="Contraseña" formControlName="password">
-        <button class="btn btn-success mb-4" type="submit" [disabled]="signInForm.invalid" (click)="validation()">Ingresar</button>
+        <button class="btn btn-danger mb-4" type="submit" [disabled]="signInForm.invalid" (click)="validation()">Ingresar</button>
         <label style="color: red;" *ngIf="!this.correct_login">Datos de ingreso incorrectos</label>
     </div>
 </form>

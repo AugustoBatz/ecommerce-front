@@ -21,6 +21,7 @@ export class AdminSignInComponent implements OnInit {
   ngOnInit(): void {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('user');
+    localStorage.setItem('user_admin', 'admin');
     this.data.resetUser();
     this.signInForm = this.initForm.group({
       username: ['', Validators.required],
