@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/models/addproduct';
 import { Login } from 'src/app/models/login_request';
+import { Purchase } from 'src/app/models/purchasedetail';
 import { Sub_product } from 'src/app/models/sub_product';
 
 @Injectable({
@@ -31,12 +32,22 @@ export class AdminserviceService {
       headers: headers1
     }) 
   }
+  insert_purchaseDetail(purchase_detail: Purchase){
+    let headers1 = new HttpHeaders();
+    headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'));
+    return this.http.post(this.API_URI + '/product/detail/purchase', purchase_detail,{
+      headers: headers1
+    }) 
+  }
   logout() {
     localStorage.removeItem('admin_token');
-    localStorage.removeItem('user_admin');
+    //localStorage.removeItem('user_admin');
   }
   public get logIn(): boolean {
     return (localStorage.getItem('admin_token') !== null);
+  }
+  public get admin_in(): boolean {
+    return (localStorage.getItem('user_admin') !== null);
   }
   public get user(): string{
     return localStorage.getItem('user_admin');
