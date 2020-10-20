@@ -30,6 +30,7 @@ import { APIService } from './services/backend/api.service';
 import {DataService} from './services/data/data.service';
 import { AdminserviceService } from './services/admin/adminservice.service';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
+import { ProductListComponent } from './components/admin/product-list/product-list.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { AdminHomeComponent } from './components/admin/admin-home/admin-home.com
     AddProductComponent,
     AdminSignInComponent,
     MenuComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
