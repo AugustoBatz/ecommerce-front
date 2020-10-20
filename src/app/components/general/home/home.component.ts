@@ -13,6 +13,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     const observer = lozad(); // lazy loads elements with default selector as '.lozad'
     observer.observe();
+    this.close_sesion();
   }
-
+  close_sesion(){
+    localStorage.removeItem('admin_token');
+    localStorage.removeItem('user_admin');
+  }
 }
