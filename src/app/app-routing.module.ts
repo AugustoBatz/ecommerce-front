@@ -12,6 +12,7 @@ import { AboutComponent } from './components/general/about/about.component';
 import {AddProductComponent} from './components/admin/add-product/add-product.component';
 import { AdminSignInComponent } from './components/admin/admin-sign-in/admin-sign-in.component';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
+import { ProductListComponent } from './components/admin/product-list/product-list.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,9 @@ const routes: Routes = [
     path: 'admin',
     component: AdminHomeComponent,
     pathMatch: 'full'
+  },{
+    path: 'admin/product-list',
+    component: ProductListComponent,
   }];
 
 @NgModule({
