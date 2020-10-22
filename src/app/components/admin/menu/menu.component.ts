@@ -9,7 +9,7 @@ import { AdminserviceService } from 'src/app/services/admin/adminservice.service
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private adminService: AdminserviceService, private router: Router) { }
+  constructor(public adminService: AdminserviceService, private router: Router) { }
 
   ngOnInit(): void {
     
