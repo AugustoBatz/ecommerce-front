@@ -14,7 +14,6 @@ export class AdminHomeComponent implements OnInit {
   ngOnInit(): void {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('user');
-    localStorage.setItem('user_admin', 'admin');
     if(!this.adminService.logIn){
       this.router.navigate(['admin/sign-in']);
     }
