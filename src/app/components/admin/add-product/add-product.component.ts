@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/addproduct';
 import { Purchase } from 'src/app/models/purchasedetail';
 import { SProduct_Response } from 'src/app/models/sproduct_response';
@@ -19,7 +20,7 @@ export class AddProductComponent implements OnInit {
   productForm: FormGroup; 
   sub_productForm: FormGroup;
   purchaseForm: FormGroup;
-  constructor(private initForm: FormBuilder, private adminService: AdminserviceService) { }
+  constructor(private initForm: FormBuilder, private adminService: AdminserviceService, private router: Router) { }
   private product: Product = {
     name: '',
     code: '',
@@ -51,6 +52,9 @@ export class AddProductComponent implements OnInit {
       quantity: ['', Validators.required],
       cost: ['', Validators.required]
     });
+    if(!this.adminService.logIn){
+      this.router.navigate(['admin/sign-in']);
+    }
     //this.productForm.valueChanges.subscribe(console.log)
 
   }
