@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Signup } from 'src/app/models/signup';
 import { APIService } from 'src/app/services/backend/api.service';
 import { DataService } from 'src/app/services/data/data.service';
+import { ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -27,8 +28,11 @@ export class SignUpComponent implements OnInit {
   constructor(
     private data: DataService,
     private initForm: FormBuilder,
-    private apiService: APIService
+    private apiService: APIService,
+    private router: Router
     ) { }
+
+  
 
   ngOnInit(): void {
     this.signUpForm = this.initForm.group({
@@ -50,6 +54,8 @@ export class SignUpComponent implements OnInit {
     console.log(this.user);
     this.apiService.saveUser(this.user).subscribe((resp: any) => {    
           this.clearFullHtmlData();  
+          alert('Registro completo. Puede iniciar sesión.');
+          this.router.navigate(['sign-in']);
         },
         (error: any) => {
           console.log("ERROR: " + error );
