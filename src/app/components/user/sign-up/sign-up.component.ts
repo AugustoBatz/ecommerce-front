@@ -59,6 +59,7 @@ export class SignUpComponent implements OnInit {
         },
         (error: any) => {
           console.log("ERROR: " + error );
+          alert('Registro fallido. Por favor intente de nuevo.');
           this.clearErrorHtmlData();
         }
       );
