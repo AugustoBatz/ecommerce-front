@@ -39,6 +39,20 @@ export class AdminserviceService {
       headers: headers1
     }) 
   }
+  productData(){
+    let headers1 = new HttpHeaders();
+    headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'));
+    return this.http.get(this.API_URI + '/product', {
+      headers: headers1
+    });
+  }
+  subproductData(code: String){
+    let headers1 = new HttpHeaders();
+    headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'));
+    return this.http.get(this.API_URI + '/product/sub-detail/'+ code, {
+      headers: headers1
+    });
+  }
   logout() {
     localStorage.removeItem('admin_token');
     //localStorage.removeItem('user_admin');
