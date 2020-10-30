@@ -58,21 +58,30 @@
     border-radius: 8px
     height: 40%
     width: 60%
-    background-color: #F66F98
+    background-color: #CE77E7
+    font-size: 120%
     border: 0px
     color: #fff
-    transition: 0.2s
+    transition: 0.3s
+    &:hover
+        background: linear-gradient(to left, #809bf5, #CE77E7)
     &:active
-        color: #000
-        background-color: #f84c7f
+        color: #000 
 
-.front-card, .back-card 
-    position: absolute
-    width: 100%
+.second-button
     height: 100%
 
-.custom-row:active .custom-row-inner
-  transform: rotateY(180deg)
+.colapsable-background
+    background: linear-gradient(to right, #F66F98, #FEE040)
+    border-bottom-left-radius: 15px
+    border-bottom-right-radius: 15px
+
+.input-colapsable
+    outline: none
+    border-radius: 8px
+    border: 0px
+    text-align: center
+    color: #4B2956
 
 .front-card-design
     position: relative
@@ -86,25 +95,7 @@
     backface-visibility: hidden
     &:hover
         transition: 0.2s
-        border: 2px solid #F66F98
-        box-shadow: 2px 6px 8px 0.1px #F66F98
-
-
-.back-card-design
-    position: relative
-    width: 100%
-    transform: rotateY(180deg)
-    padding: 7px
-    border: 2px solid #A389EE
-    background-color: #fff
-    border-radius: 5px
-    box-shadow: 2px 6px 8px 0.1px #A389EE
-    perspective: 1000px
-    -webkit-backface-visibility: hidden
-    backface-visibility: hidden
-    &:hover
-        transition: 0.2s
-        border: 2px solid #F66F98
+        border: 3px solid #F66F98
         box-shadow: 2px 6px 8px 0.1px #F66F98
 
 /*Override boostrap classes*/
