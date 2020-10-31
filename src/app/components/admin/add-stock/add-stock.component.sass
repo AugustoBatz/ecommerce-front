@@ -1,0 +1,142 @@
+#main-page
+    margin-left: 3%
+    margin-right: 3%   
+
+#main-header
+    margin-top: 60px
+    padding-left: 2%
+    padding-right: 2%
+    display: flex
+    padding-top: 1%
+    padding-bottom: 1%
+    align-items: center
+    background: linear-gradient(to left, #80BFF5, #CE77E7)
+    color: #fff
+    border-top-right-radius: 15px
+    border-top-left-radius: 15px
+
+#first-form
+    margin-bottom: 6px
+
+.form-first-row
+    margin-top: 5px
+    margin-bottom: 5px
+    padding-top: 16px
+    background: linear-gradient(to left, #D8D4F2, #bdb7df)
+    text-align: center
+    height: 60px
+    color: #4B2956
+    transition: 0.3s
+    clip-path: polygon(93% 0, 100% 50%, 93% 100%, 0% 100%, 6% 51%, 0% 0%)
+    &:hover
+        background-color: #F5F5F5
+
+.custom-row
+    position: relative
+    background-color: transparent
+    perspective: 1000px
+    margin-bottom: 10px
+
+.first-component
+    clip-path: polygon(93% 0, 100% 50%, 93% 100%, 0% 100%, 0% 51%, 0% 0%)
+
+.center-box-text
+    display: flex
+    justify-content: center
+    align-content: center
+    align-items: center
+    flex-direction: column
+    padding-left: 10px
+    text-align: left
+    padding-bottom: 0px 
+    padding-bottom: 0px 
+    h5
+        font-size: 1rem !important
+
+.form-button
+    outline: none
+    border-radius: 8px
+    height: 40%
+    width: 60%
+    background-color: #CE77E7
+    font-size: 120%
+    border: 0px
+    color: #fff
+    transition: 0.3s
+    &:hover
+        background: linear-gradient(to left, #809bf5, #CE77E7)
+    &:active
+        color: #000 
+
+.second-button
+    height: 100%
+
+.colapsable-background
+    background: linear-gradient(to right, #F66F98, #FEE040)
+    border-bottom-left-radius: 15px
+    border-bottom-right-radius: 15px
+
+.input-colapsable
+    outline: none
+    border-radius: 8px
+    border: 0px
+    text-align: center
+    color: #4B2956
+
+.front-card-design
+    position: relative
+    padding: 7px
+    border: 2px solid #A389EE
+    background-color: #fff
+    border-radius: 5px
+    box-shadow: 2px 6px 8px 0.1px #A389EE
+    perspective: 1000px
+    -webkit-backface-visibility: hidden
+    backface-visibility: hidden
+    &:hover
+        transition: 0.2s
+        border: 3px solid #F66F98
+        box-shadow: 2px 6px 8px 0.1px #F66F98
+
+/*Override boostrap classes*/
+.col-md-3
+    margin-bottom: 0px !important
+    padding-bottom: 0px !important
+
+/* Extra small devices (phones, 600px and down) */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 767px) 
+    h1 
+        font-size: 3rem
+        -webkit-text-stroke: 1px 
+        text-align: center
+    #first-form
+        transition: 0.3s
+        display: none
+    .center-box-text
+        text-align: center
+        margin-bottom: 15px
+    .form-button
+        height: 50px
+        margin-bottom: 10px
+
+@media only screen and (max-width: 400px) 
+    h1    
+        font-size: 2rem
+        -webkit-text-stroke: 0.5px 
+        text-align: center
+           
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) 
+    h1 
+        font-size: 5rem      
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px)
+    h1 
+        font-size: 6rem
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) 
+      h1
+        font-size: 10.5rem

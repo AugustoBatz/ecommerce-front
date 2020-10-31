@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/addproduct';
-import { Purchase } from 'src/app/models/purchasedetail';
 import { SProduct_Response } from 'src/app/models/sproduct_response';
 import { Sub_product } from 'src/app/models/sub_product';
 import { AdminserviceService } from 'src/app/services/admin/adminservice.service';
@@ -30,9 +29,6 @@ export class AddProductComponent implements OnInit {
 
   }
   public url = 'https://forestprod.org/global_graphics/default-store-350x350.jpg';
-  public brands = ['Marca1', 'Marca2', 'Marca3'];
-  public selected_brand: string;
-  public initial_brand: string ='';
   ngOnInit(): void {
     this.productForm = this.initForm.group({
       name: ['', Validators.required],
@@ -46,11 +42,6 @@ export class AddProductComponent implements OnInit {
       color: ['', Validators.required],
       size: ['', Validators.required],
       price: ['', Validators.required]
-    });
-    this.purchaseForm = this.initForm.group({
-      id_detail_product: [0, Validators.required],
-      quantity: ['', Validators.required],
-      cost: ['', Validators.required]
     });
     if(!this.adminService.logIn){
       this.router.navigate(['admin/sign-in']);
@@ -75,36 +66,42 @@ export class AddProductComponent implements OnInit {
     }
 
   }
-  selectedBrand(text: string) {
-    this.selected_brand = text;
+  clear_data(){
     this.productForm.setValue({
-      name: this.productForm.controls['name'].value,
-      code: this.productForm.controls['code'].value,
-      category: this.productForm.controls['category'].value,
-      brand: text,
-      image: this.productForm.controls['image'].value
-    })
+      name: '',
+      code: '',
+      category: '',
+      brand: '',
+      image: ''
+    });
+    this.sub_productForm.setValue({
+      code_product: '',
+      color: '', 
+      size: '', 
+      price: ''
+    });
+    this.purchase_details = [];
+    this.url='https://forestprod.org/global_graphics/default-store-350x350.jpg';
   }
-  addPurchase(subresponse: SProduct_Response){
-    let purchase: Purchase = {
-      id_detail_product: subresponse.id,
-      quantity: this.purchaseForm.controls['quantity'].value,
-      cost: this.purchaseForm.controls['cost'].value
-    }
-    this.adminService.insert_purchaseDetail(purchase).subscribe(
-      res=> {
-        this.purchaseForm.controls['quantity'].setValue('');
-        this.purchaseForm.controls['cost'].setValue('');
-      },
-      err=> console.log(err)
-    );
-  }
+
   addSubProduct(){
     this.adminService.insert_subproduct(this.sub_productForm.value).subscribe(
       (res: SProduct_Response) => 
       {
         console.log(res);
+        alert("Sub producto agregado");
+        this.sub_productForm.setValue({
+          code_product: this.sub_productForm.controls['code_product'].value,
+          color: '', 
+          size: '', 
+          price: ''
+        });
         this.purchase_details.push(res);
+      },
+      (err) => {
+        if (err.status == 400){
+          alert("Sub producto repetido");
+        }
       }
     );
     
@@ -115,6 +112,9 @@ export class AddProductComponent implements OnInit {
   onUpload(){
     console.log(this.selected_file);
   }
+  exit(){
+    this.router.navigate(['admin']);
+  }
   insertProduct(){ 
     this.product = this.productForm.value;
     console.log(this.product);
@@ -122,9 +122,14 @@ export class AddProductComponent implements OnInit {
       res => 
       {
         this.added_product = true;
+        alert("Producto agregado correctamente");
         this.sub_productForm.controls['code_product'].setValue(this.product.code);
       },
-      err => console.log(err)
+      err => {
+        if (err.status == 400){
+          alert("Producto repetido");
+        }
+      }
     )
   }
 }
