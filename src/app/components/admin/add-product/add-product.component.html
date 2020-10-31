@@ -41,28 +41,25 @@
         </form>
       </div>
       <div class="row" id="stock" *ngIf="product_exist()">
-        <form [formGroup]="purchaseForm">
+        <form>
           <hr>
           <div class="container" id="purchase-form" >
               <div id= "product-form-title">
-                  <h2>Definir Stock</h2>
+                  <h2>Sub productos agregados</h2>
               </div>
               <ul class="list-unstyled">
                 <li *ngFor="let pdetail of purchase_details">
                   <label style="text-align: center;">{{pdetail.product}} - {{pdetail.color}} - {{pdetail.size}}</label>
-                  <label for="quantity">Cantidad</label>
-                  <input class="productInput" type="text" placeholder="Cantidad" id="quantity" formControlName="quantity">
-                  <label for="cost">Costo</label>
-                  <input class="productInput" type="text" placeholder="Costo" id="cost" formControlName="cost">
-                  <button class="btn btn-warning" style="width: 100%;" [disabled]="purchaseForm.invalid" (click)="addPurchase(pdetail)">Agregar a Stock</button>
                 </li>
-
               </ul>       
               <br> 
           </div>
         </form>
       </div>
-      
+      <br>
+
+      <button type="button" class="btn btn-warning" (click)="clear_data()">Registrar Nuevo Producto</button>
+      <button type="button" class="btn btn-success ml-1"(click)="exit()">Finalizar Registro</button>
     </div>
   </div>
 </div>
