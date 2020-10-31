@@ -14,6 +14,8 @@ export class ProductListComponent implements OnInit {
   productos: any;
   subproductos: any;
   producto: any;
+  arreglo: [];
+  contenido = document.getElementById('codigo');
   
   constructor(public data: DataService, private adminService: AdminserviceService, private router: Router, public prodService: DataProductsService, public subService: DataProductsService) { }
 
@@ -26,7 +28,7 @@ export class ProductListComponent implements OnInit {
   }
   getList(){
     this.adminService.productData().subscribe(
-      (res: any) => {
+      (res: []) => {
         this.prodService.set_list(res);
         console.log(res);
         this.productos= this.prodService.get_list;
@@ -41,12 +43,16 @@ export class ProductListComponent implements OnInit {
   }
   getSubproduct(code: String){
     this.adminService.subproductData(code).subscribe(
-      (res2: any) => {
-        this.subService.set_list(res2);
-        console.log(res2);
-        this.subproductos= this.subService.get_list;
-        console.log(this.producto);
-
+      (res2: []) => {
+       for(var index in res2){
+          
+          if(index == "details"){
+            this.arreglo = res2[index];
+          }
+        }
+        for(var index in this.arreglo){
+          console.log(this.arreglo[index]['color']);
+        }
       }
       , 
       err => 
