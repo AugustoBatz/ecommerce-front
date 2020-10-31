@@ -32,6 +32,7 @@ import { AdminserviceService } from './services/admin/adminservice.service';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
 import { AddStockComponent } from './components/admin/add-stock/add-stock.component';
+import { DataProductsService } from './services/dataProducts/data-products.service';
 
 
 @NgModule({
@@ -67,7 +68,7 @@ import { AddStockComponent } from './components/admin/add-stock/add-stock.compon
     MatCheckboxModule,
     MatChipsModule
   ],
-  providers: [APIService, DataService, AdminserviceService],
+  providers: [APIService, DataService, AdminserviceService, DataProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

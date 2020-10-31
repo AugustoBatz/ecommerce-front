@@ -1,1 +1,61 @@
-<p>product-list works!</p>
+<div class="container">
+  <br />
+  <br />
+<form class="row container" id="principal-form">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Categoría</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        
+        <td><a data-toggle="modal" data-target="#miModal"> <div *ngFor="let item of productos" 
+                (click) = "getSubproduct(item.code)">
+          {{item.code}} </div>
+        </a>
+          <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="myModalLabel">Subproductos</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Talla</th>
+                          <th scope="col">Color</th>
+                          <th scope="col">Precio</th>
+                          <th scope="col">Stock</th>
+                        </tr>
+                        <tr>         
+                          <td><div *ngFor="let item of arreglo"> {{item.size}} </div></td>
+                          <td><div *ngFor="let item of arreglo"> {{item.color}} </div></td>
+                          <td><div *ngFor="let item of arreglo"> {{item.price}} </div></td>
+                          <td><div *ngFor="let item of arreglo"> {{item.quantity}} </div></td>
+                        </tr>
+                      </thead>
+                    </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td><div *ngFor="let item of productos">{{item.name}}</div></td>
+        <td><div *ngFor="let item of productos"> {{item.brand}} </div></td>
+        <td><div *ngFor="let item of productos"> {{item.category}} </div></td>
+        <td><div *ngFor="let item of productos"> <img width="20" height="20" src={{item.image}}> </div></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+</div>
