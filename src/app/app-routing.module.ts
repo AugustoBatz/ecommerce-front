@@ -62,7 +62,7 @@ const routes: Routes = [
     path: 'admin/add-stock',
     component: AddStockComponent,
   },{
-    path: 'products',
+    path: 'store',
     component: ListProductsComponent,
   }];
 
