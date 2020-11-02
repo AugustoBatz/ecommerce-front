@@ -14,10 +14,11 @@ import { AdminSignInComponent } from './components/admin/admin-sign-in/admin-sig
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
 import { AddStockComponent } from './components/admin/add-stock/add-stock.component';
+import { ListProductsComponent } from './components/store/list-products/list-products.component'
 
 const routes: Routes = [
   {
-    path: '', 
+    path: '',
     redirectTo: '/home', 
     pathMatch: 'full'
   },{
@@ -60,6 +61,9 @@ const routes: Routes = [
   },{
     path: 'admin/add-stock',
     component: AddStockComponent,
+  },{
+    path: 'products',
+    component: ListProductsComponent,
   }];
 
 @NgModule({
