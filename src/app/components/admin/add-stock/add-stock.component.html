@@ -7,49 +7,78 @@
             <div class="col-md-3 mb-3 form-first-row first-component">
                 <h5>Nombre</h5>
             </div>
-            <div class="col-md-3 mb-3 form-first-row">
+            <div class="col-md-2 mb-3 form-first-row">
                 <h5>Color</h5>
             </div>
-            <div class="col-md-3 mb-3 form-first-row">
+            <div class="col-md-2 mb-3 form-first-row">
                 <h5>Talla</h5>
             </div>
-            <div class="col-md-3 mb-3 form-first-row last-component">
-                <h5>Detalles</h5>
+            <div class="col-md-2 mb-3 form-first-row last-component">
+                <h5>Cantidad</h5>
+            </div>
+            <div class="col-md-2 mb-3 form-first-row last-component">
+                <h5>Añadir</h5>
             </div>
         </div>
     </form>
 
-    <form id="main-data-form">
-        <div class="custom-row">
-            <div class ="form-row front-card-design">
-                <div class="col-md-3 mb-3 center-box-text">
-                    <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit magnam architecto tempora non in rerum dolorum quisquam, eos, suscipit quia culpa incidunt id. Sint natus sed officiis, quo ducimus assumenda?</h5>
+
+    <form id="main-data-form" *ngFor="let product of product_list">
+        <div class="custom-row" >
+            <div class="container">
+                <div class="col center-box-text">
+                    <h5>Producto: {{product.code}}</h5>
+                    <img class="img-thumbnail" [src]="product.image" style="max-width: 120px;">
                 </div>
-                <div class="col-md-3 mb-3 center-box-text">
-                    <h5>Color</h5>
+            </div>
+            
+        </div>
+        <div class="custom-row" *ngFor="let subproduct of product.subproducts; let i = index">
+            <div class ="form-row front-card-design" >
+                <div class="col-md-2 ml-5 mb-2 center-box-text">
+                    <h5>{{product.name}}</h5>
                 </div>
-                <div class="col-md-3 mb-3 center-box-text">
-                    <h5>Talla</h5>
+                <div class="col-md-2 ml-5 mb-2 center-box-text">
+                    <h5>{{subproduct.color}}</h5>
                 </div>
-                <div class="col-md-3 mb-3 center-box-text">
-                    <button class="btn btn-primary form-button" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Comprar
+                <div class="col-md-2 ml-4 mb-2 center-box-text">
+                    <h5>{{subproduct.size}}</h5>
+                </div>
+                <div class="col-md-2 ml-4 mb-2 center-box-text">
+                    <h5>{{subproduct.quantity}}</h5>
+                </div>
+                <div class="col-md-2 mb-3 center-box-text">
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" [attr.href]="'#collapse_'+ subproduct.id" aria-expanded="false" [attr.aria-controls]="subproduct.id" >
+                        Agregar Stock
                     </button>
                 </div>
             </div>
-            <div class="collapse" id="collapseExample">
+            <div class="collapse" id="{{'collapse_' + subproduct.id}}">
                 <div class="card card-body colapsable-background">
                     <div class ="form-row">
-                        <div class="col-md-4 mb-3 center-box-text">
-                            <input type="number" placeholder="Cantidad" class="input-colapsable">
+                        <div class="col-md-3 mb-3 center-box-text">
+                            <label for="subid">ID</label>
+                            <input type="number" placeholder="id" #id value="{{subproduct.id}}" name="id" disabled="true" id="subid" class="input-colapsable">
                         </div>
-                        <div class="col-md-4 mb-3 center-box-text">
-                            <input type="text" placeholder="Precio" class="input-colapsable">
+                        <div class="col-md-3 mb-3 center-box-text">
+                            <label for="quantity">Cantidad</label>
+                            <input type="number" placeholder="Cantidad" #quantity value="0" id="quantity" name="quantity"  class="input-colapsable">
                         </div>
-                        <div class="col-md-4 mb-3 center-box-text">
-                            <button class="form-button second-button">Confirmar</button>
+                        <div class="col-md-3 mb-3 center-box-text">
+                            <label for="price">Costo Q.</label>
+                            <input type="number" placeholder="Precio" id="price" #cost value="0" name="cost" class="input-colapsable">
+                        </div>
+                        <div class="col-md-3 mb-3 center-box-text">
+                            <button class="form-button second-button" (click)="sendData(subproduct.id)">Confirmar</button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="custom-row" *ngIf="product.subproducts.length == 0">
+            <div class ="form-row front-card-design" >
+                <div class="col-md-3 mb-3 center-box-text">
+                    <h5>No hay sub-productos registrados</h5>
                 </div>
             </div>
         </div>
