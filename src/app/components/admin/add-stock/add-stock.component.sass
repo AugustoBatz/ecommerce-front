@@ -11,6 +11,7 @@
     padding-bottom: 1%
     align-items: center
     background: linear-gradient(to left, #80BFF5, #CE77E7)
+    background: #80BFF5
     color: #fff
     border-top-right-radius: 15px
     border-top-left-radius: 15px
@@ -72,7 +73,7 @@
     height: 100%
 
 .colapsable-background
-    background: linear-gradient(to right, #F66F98, #FEE040)
+    background: #80BFF5
     border-bottom-left-radius: 15px
     border-bottom-right-radius: 15px
 
@@ -97,7 +98,19 @@
         transition: 0.2s
         border: 3px solid #F66F98
         box-shadow: 2px 6px 8px 0.1px #F66F98
+label
+    color: white
+    
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
 
+
+/* Firefox */
+input[type=number] 
+  -moz-appearance: textfield
+  
 /*Override boostrap classes*/
 .col-md-3
     margin-bottom: 0px !important
