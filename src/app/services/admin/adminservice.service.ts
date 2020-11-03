@@ -46,6 +46,13 @@ export class AdminserviceService {
       headers: headers1
     });
   }
+  getProduct_List(){
+    let headers1 = new HttpHeaders();
+    headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'));
+    return this.http.get(this.API_URI + '/product/listsubproducts', {
+      headers: headers1
+    });
+  }
   subproductData(code: String){
     let headers1 = new HttpHeaders();
     headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'));
