@@ -1,67 +1,54 @@
-<body>
+<section id="title">
   <div class="container">
-    <h2>Perfil</h2><br>
-    <br /><br />
-    <!-- Primer bloque -->
-    <form class="row container" id="principal-form">
-      <div class="col-sm-8">
-        <dl id="campos">
-          <h2 style="text-align: center;">{{this.data.user.username}}</h2>
-          <a routerLink="/profile/edit"><label style="text-align: center;">Modificar usuario <i class="fas fa-edit"></i></label></a>
-          <dt>
-            <label>Nombre: </label>
-            <p>{{this.data.user.first_name}} {{this.data.user.last_name}}<p>
-          </dt>
-          <dt>
-            <label>Correo: </label>
-            <p>{{this.data.user.email}}<p>
-          </dt>
-          <dt>
-            <label>Teléfono:</label>
-            <p>{{this.data.user.phone}}<p>
-          </dt>
-          <dt>
-            <label>Dirección:</label>
-            <p>{{this.data.user.address_a}}<p>
-          </dt>
-          <dt>
-            <label>Ciudad: </label>
-            <p>{{this.data.user.address_b}}<p>
-          </dt>
-        </dl>
-      </div>
+    <h2>Perfil</h2>
+  </div>
+</section>
+<section>
+  <div class="form-row" style="margin-right: 0; margin-left: 0;">
+    <div id="left-panel-wrapper" class="col-md-3 custom-panel">
+      <div id="left-panel" style="background-image: url('./assets/clothes3.jpg');"></div>
+    </div>
+    <div id="right-panel-wrapper" class="col-md-9 custom-panel">
+      <div id="right-panel">
 
-      <div class="col-sm-4" id="photo">
-          <img src="../../../../assets/guest.png" alt="photo" id="photo">
-      </div> 
-
-      <div class="card">
-          <div class="card-header" id="card_title">Información de pago</div>
-          <div class="card-body">
-            <dl id="campos">
-              <dt>
-                <label>Nombre tarjeta:</label>
-                <input type="text"  PlaceHolder="user_name" id="card_label" disabled>
-              </dt>
-              <dt>
-                <label>No. tarjeta:</label>
-                <input type="number"  PlaceHolder="no_card" id="card_label" disabled>
-              </dt>
-              <dt>
-                <label>Fecha de expiración:</label>
-                <input type="date"  PlaceHolder="card_date" id="card_label" disabled>
-              </dt>
-              <dt>
-                <label>CV:</label>
-                <input type="number"  PlaceHolder="cv" id="card_label" disabled>
-              </dt>
-              <dt>
-                <label>Monto:</label>
-                <input type="number"  PlaceHolder="monto" id="card_label" disabled>
-              </dt>
-            </dl>
-          </div>
+        <div id = "username-tag">
+          <h4>{{this.data.user.username}}</h4>
         </div>
-    </form>
-  </div> 
-</body>   
+
+        <div class = "info-row">
+          <div class="info-label">
+            <h4>Nombre:</h4>
+          </div>
+          <label class="custom-input">{{this.data.user.first_name}}  {{this.data.user.last_name}}</label>
+        </div>
+        <div class = "info-row">
+          <div class="info-label">
+            <h4>Correo:</h4>
+          </div>
+          <label class="custom-input">{{this.data.user.email}}</label>
+        </div>
+        <div class = "info-row">
+          <div class="info-label">
+            <h4>Teléfono:</h4>
+          </div>
+          <label class="custom-input">{{this.data.user.phone}}</label>
+        </div>
+        <div class = "info-row">
+          <div class="info-label">
+            <h4>Dirección:</h4>
+          </div>
+          <label class="custom-input">{{this.data.user.address_a}}</label>
+        </div>
+        <div class = "info-row">
+          <div class="info-label">
+            <h4>Ciudad:</h4>
+          </div>
+          <label class="custom-input">{{this.data.user.address_b}}</label>
+        </div>
+        <div id="button-wrapper">
+          <button routerLink="/profile/edit" id="edit-button">Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

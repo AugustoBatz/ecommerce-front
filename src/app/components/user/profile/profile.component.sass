@@ -1,34 +1,145 @@
-h2
+$primary: #d62828
+$secondary: #f77f00
+$complement: #fcbf49
+$base: #003049
+$contrast: #eae2b7
+$description-text: #584e4e
+
+#title
+  background: $base
+  text-align: center
+  text-transform: uppercase
+  h2
+    padding-top: 15px
+    padding-bottom: 15px
+    color: $base
+    -webkit-text-stroke: 2px $contrast
+    font-size: 60px
+  p
+    color: $primary
+  h2
     padding: 25px
 
-#principal-form
-    margin: 5px
-    padding: 15px
+#left-panel-wrapper
+  padding-left: 30px
+  padding-right: 0px
 
-#photo
-    width:60%
-    height:80%
-    border-radius: 150px
-    align-content: center
+#right-panel-wrapper
+  border-top-right-radius: 15px
+  padding-right: 30px
+  padding-left: 0px
 
-#data_label
-    height: 25px
-    margin-left: auto 
-    margin-right: auto
-    border-radius: 0.4em
-    width: 200%
+#left-panel
+  display: block
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+  position: relative
+  z-index: 1
+  width: 100%
+  height: 100%
+  transition: 0.3s
+  &:hover
+    filter: grayscale(100%)
 
-#card_label
-    height: 25px
-    border-radius: 0.4em
-    width: 100%
-
-#campos
+#right-panel
+  width: 100%
+  height: 100%
+  background-color: $complement
+  color: $base
+  text-align: right
+  margin-bottom: 30px
+  h1, h2, h3, h4, h5
+    font-family: Poppins-Regular
     display: inline-block
-    align: right
+    margin-right: 1rem
 
-#card_title
-    background-color: #66CDAA
-    font-weight: bold
-h2 
-    text-transform: uppercase
+#username-tag
+  font-family: Poppins-Regular
+  font-size: 1.5rem
+  background-color: $base
+  color: #fff
+  padding-top: 0.5rem
+  padding-bottom: 0.5rem
+  text-align: center
+  margin-bottom: 1rem
+
+#button-wrapper
+  margin-top: 2rem
+  text-align: center
+
+#edit-button
+  padding-top: 5px
+  padding-bottom: 5px
+  outline: none !important
+  border: none !important
+  width: 60%
+  background-color: $base
+  color: $contrast
+  border-radius: 5px
+  transition: 0.3s
+  &:hover
+    background-color: $primary
+
+.custom-panel
+  margin-top: 30px
+  height: 27rem
+
+.info-row
+  padding-top: 1rem
+  max-width: 100%
+  h4
+    width: 15%
+
+.info-label
+  display: inline-flex
+
+.custom-input
+  text-align: center
+  border-bottom-left-radius: 5px
+  border-top-left-radius: 5px
+  background-color: #fff
+  border: none
+  width: 80%
+  height: 100%
+  font-size: 1.2rem
+
+@media (max-width: 950px)
+  .custom-input
+    width: 70%
+  .info-label
+    font-size: 0.5rem
+  #edit-button
+    width: 40%
+
+@media (max-width: 767px)
+  #left-panel-wrapper
+    margin-top: 40px
+    padding-right: 30px
+    height: 8rem
+  #right-panel-wrapper
+    top: 0px
+    margin-top: 0px
+    padding-left: 30px
+  #right-panel
+    text-align: center
+  .info-label
+    width: 100%
+    display: block
+    text-align: center
+    margin-bottom: 5px
+  #right-panel
+    height: 40rem
+  #edit-button
+    width: 60%
+
+@media (max-width: 650px)
+  .custom-input
+    font-size: 0.8rem
+  #right-panel
+    height: 38rem
+
+@media (max-width: 300px)
+  #title
+    h2
+      font-size: 30px
