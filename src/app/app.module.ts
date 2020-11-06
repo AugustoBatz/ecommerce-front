@@ -25,6 +25,7 @@ import { PurchaseHistoryComponent } from './components/user/purchase-history/pur
 import { ContactUsComponent } from './components/general/contact-us/contact-us.component';
 import { HomeComponent } from './components/general/home/home.component';
 import { AboutComponent } from './components/general/about/about.component';
+import { CartComponent } from './components/store/cart/cart.component';
 //Servicios 
 import { APIService } from './services/backend/api.service';
 import {DataService} from './services/data/data.service';
@@ -34,6 +35,7 @@ import { ProductListComponent } from './components/admin/product-list/product-li
 import { AddStockComponent } from './components/admin/add-stock/add-stock.component';
 import { DataProductsService } from './services/dataProducts/data-products.service';
 import { ListProductsComponent } from './components/store/list-products/list-products.component';
+
 
 
 @NgModule({
@@ -55,7 +57,8 @@ import { ListProductsComponent } from './components/store/list-products/list-pro
     AdminHomeComponent,
     ProductListComponent,
     AddStockComponent,
-    ListProductsComponent
+    ListProductsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

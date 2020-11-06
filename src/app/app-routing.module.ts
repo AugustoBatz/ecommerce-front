@@ -15,6 +15,7 @@ import { AdminHomeComponent } from './components/admin/admin-home/admin-home.com
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
 import { AddStockComponent } from './components/admin/add-stock/add-stock.component';
 import { ListProductsComponent } from './components/store/list-products/list-products.component'
+import { CartComponent } from './components/store/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,9 @@ const routes: Routes = [
   },{
     path: 'store',
     component: ListProductsComponent,
+  },{
+    path: 'cart',
+    component: CartComponent,
   }];
 
 @NgModule({
