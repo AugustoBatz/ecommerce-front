@@ -14,6 +14,9 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Buscar">
       <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
     </form>
+    <button class="btn btn-secondary ml-2" *ngIf="logged()" routerLink="/cart" type="button"  aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-shopping-cart"></i>
+    </button>
     <div class="dropdown mr-5 ml-2">
        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="!logged()">
         <i class="fas fa-address-card"></i> Ingresar
@@ -28,9 +31,6 @@
         <a class="dropdown-item" routerLink="/home"*ngIf="logged()" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
       </div>
     </div>
-    <button class="btn btn-secondary" routerLink="/cart" type="button"  aria-haspopup="true" aria-expanded="false">
-      <i class="fas fa-shopping-cart"></i>
-    </button>
   </div>
   </div>
 </nav>
