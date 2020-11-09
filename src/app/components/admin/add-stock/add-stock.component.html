@@ -1,3 +1,8 @@
+<section id="adds-stock-header">
+  <div class="container">
+    <h2>Agregar productos a inventario</h2>
+  </div>
+</section>
 <div id="main-page">
     <div id="main-header">
         <h3>Agregar a inventario:</h3>
@@ -35,7 +40,7 @@
                     </button>
                 </div>
             </div>
-            
+
         </div>
         <div class="custom-row" *ngFor="let subproduct of product.subproducts; let i = index">
             <div class ="form-row front-card-design" >
@@ -92,10 +97,10 @@
  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-        <div class="modal-header container" style="background: #80BFF5"> 
+        <div class="modal-header container" style="background: #80BFF5">
             <h5 class="modal-title  ml-auto mr-auto" id="exampleModalLongTitle" style="text-align: center; color: white;">Nombre: {{current_product.name}}
                 <br>Código: {{current_product.code}}<br>
-                <br><img class="img-thumbnail" [src]="current_product.image" style="max-width: 120px;"> 
+                <br><img class="img-thumbnail" [src]="current_product.image" style="max-width: 120px;">
             </h5>
         </div>
         <div class="modal-body">
@@ -112,7 +117,7 @@
                             <label for="subproduct-price" style="color: black;">Precio Q.</label>
                             <input type="number" class="form-control" formControlName="price" id="subproduct-price" placeholder="Precio">
                         </form>
-                        
+
                     </div>
                 </div>
             </div>

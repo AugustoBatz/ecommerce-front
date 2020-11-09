@@ -1,3 +1,8 @@
+<section id="list-products-header">
+  <div class="container">
+    <h2>Listar productos</h2>
+  </div>
+</section>
 <div class="container">
   <br />
   <br />
@@ -14,8 +19,8 @@
 
     <tbody>
       <tr>
-        
-        <td><a data-toggle="modal" data-target="#miModal"> <div *ngFor="let item of productos" 
+
+        <td><a data-toggle="modal" data-target="#miModal"> <div *ngFor="let item of productos"
                 (click) = "getSubproduct(item.code)">
           {{item.code}} </div>
         </a>
@@ -37,7 +42,7 @@
                           <th scope="col">Precio</th>
                           <th scope="col">Stock</th>
                         </tr>
-                        <tr>         
+                        <tr>
                           <td><div *ngFor="let item of arreglo"> {{item.size}} </div></td>
                           <td><div *ngFor="let item of arreglo"> {{item.color}} </div></td>
                           <td><div *ngFor="let item of arreglo"> {{item.price}} </div></td>

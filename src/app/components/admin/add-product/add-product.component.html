@@ -1,3 +1,8 @@
+<section id="adds-products-header">
+  <div class="container">
+    <h2>Agregar productos</h2>
+  </div>
+</section>
 <div class="container">
   <div class="row">
     <div class="col">
@@ -21,7 +26,7 @@
             <input class="productInput" type="file" (change)="onFileSelected($event)" accept=".png, .jpg, .jpeg">
             <button class="btn btn-warning mb-4" [disabled]="productForm.invalid" (click)="insertProduct()">Agregar Producto</button>
             <img class="img-thumbnail" [src]="url">
-            <br> 
+            <br>
         </div>
       </form>
     </div>
@@ -36,7 +41,7 @@
               <input class="productInput" type="text" placeholder="Talla del producto" formControlName="size">
               <label>Precio: Q.<input class="productInput" type="text" placeholder="Precio del producto" formControlName="price"></label>
               <button class="btn btn-warning mb-4" [disabled]="sub_productForm.invalid" (click)="addSubProduct()">Agregar Sub-Producto</button>
-              <br> 
+              <br>
           </div>
         </form>
       </div>
@@ -51,8 +56,8 @@
                 <li *ngFor="let pdetail of purchase_details">
                   <label style="text-align: center;">{{pdetail.product}} - {{pdetail.color}} - {{pdetail.size}}</label>
                 </li>
-              </ul>       
-              <br> 
+              </ul>
+              <br>
           </div>
         </form>
       </div>
