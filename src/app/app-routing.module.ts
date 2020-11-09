@@ -16,6 +16,7 @@ import { ProductListComponent } from './components/admin/product-list/product-li
 import { AddStockComponent } from './components/admin/add-stock/add-stock.component';
 import { ListProductsComponent } from './components/store/list-products/list-products.component'
 import { CartComponent } from './components/store/cart/cart.component';
+import { ProductComponent } from './components/store/product/product.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,10 @@ const routes: Routes = [
   },{
     path: 'cart',
     component: CartComponent,
+  }
+  ,{
+    path: 'store/product',
+    component: ProductComponent,
   }];
 
 @NgModule({

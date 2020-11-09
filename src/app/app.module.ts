@@ -35,6 +35,8 @@ import { ProductListComponent } from './components/admin/product-list/product-li
 import { AddStockComponent } from './components/admin/add-stock/add-stock.component';
 import { DataProductsService } from './services/dataProducts/data-products.service';
 import { ListProductsComponent } from './components/store/list-products/list-products.component';
+import { ProductComponent } from './components/store/product/product.component';
+import { CheckoutComponent } from './components/store/checkout/checkout.component';
 
 
 
@@ -58,7 +60,9 @@ import { ListProductsComponent } from './components/store/list-products/list-pro
     ProductListComponent,
     AddStockComponent,
     ListProductsComponent,
-    CartComponent
+    CartComponent,
+    ProductComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
