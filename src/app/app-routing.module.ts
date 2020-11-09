@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-//Componentes 
+//Componentes
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
@@ -17,11 +17,12 @@ import { AddStockComponent } from './components/admin/add-stock/add-stock.compon
 import { ListProductsComponent } from './components/store/list-products/list-products.component'
 import { CartComponent } from './components/store/cart/cart.component';
 import { ProductComponent } from './components/store/product/product.component';
+import {ListUsersComponent} from './components/admin/list-users/list-users.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home', 
+    redirectTo: '/home',
     pathMatch: 'full'
   },{
     path: 'home',
@@ -73,6 +74,9 @@ const routes: Routes = [
   ,{
     path: 'store/product',
     component: ProductComponent,
+  },{
+    path: 'admin/list-admin-users',
+    component: ListUsersComponent,
   }];
 
 @NgModule({

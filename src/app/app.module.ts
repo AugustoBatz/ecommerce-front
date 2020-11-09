@@ -37,6 +37,7 @@ import { DataProductsService } from './services/dataProducts/data-products.servi
 import { ListProductsComponent } from './components/store/list-products/list-products.component';
 import { ProductComponent } from './components/store/product/product.component';
 import { CheckoutComponent } from './components/store/checkout/checkout.component';
+import { ListUsersComponent } from './components/admin/list-users/list-users.component';
 
 
 
@@ -62,7 +63,8 @@ import { CheckoutComponent } from './components/store/checkout/checkout.componen
     ListProductsComponent,
     CartComponent,
     ProductComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ListUsersComponent
   ],
   imports: [
     BrowserModule,
