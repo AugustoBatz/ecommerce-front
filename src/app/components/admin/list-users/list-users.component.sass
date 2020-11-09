@@ -6,17 +6,26 @@ $contrast: #eae2b7
 $description-text: #584e4e
 
 #list-users-header
-  background: $primary
+  background: $contrast
   text-align: center
-  text-transform: uppercase
   h2
-    padding-top: 20px
-    padding-bottom: 20px
-    color: $primary
-    -webkit-text-stroke: 1.5px $contrast
-    font-size: 60px
+    padding-top: 15px
+    padding-bottom: 15px
+    color: $description-text
+    font-size: 30px
   p
     color: $contrast
+
+#button-add
+  border: none !important
+  width: 20%
+  border-radius: 5px
+  padding-top: 5px
+  padding-bottom: 5px
+  background-color: $complement
+  transition: 0.3s
+  &:hover
+    background-color: $secondary
 
 #main-row
   background-color: $complement

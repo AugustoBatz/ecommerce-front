@@ -38,6 +38,7 @@ import { ListProductsComponent } from './components/store/list-products/list-pro
 import { ProductComponent } from './components/store/product/product.component';
 import { CheckoutComponent } from './components/store/checkout/checkout.component';
 import { ListUsersComponent } from './components/admin/list-users/list-users.component';
+import { ContentManagementComponent } from './components/admin/content-management/content-management.component';
 
 
 
@@ -64,7 +65,8 @@ import { ListUsersComponent } from './components/admin/list-users/list-users.com
     CartComponent,
     ProductComponent,
     CheckoutComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    ContentManagementComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,8 @@ import { AddStockComponent } from './components/admin/add-stock/add-stock.compon
 import { ListProductsComponent } from './components/store/list-products/list-products.component'
 import { CartComponent } from './components/store/cart/cart.component';
 import { ProductComponent } from './components/store/product/product.component';
-import {ListUsersComponent} from './components/admin/list-users/list-users.component';
+import { ListUsersComponent } from './components/admin/list-users/list-users.component';
+import { ContentManagementComponent } from './components/admin/content-management/content-management.component';
 
 const routes: Routes = [
   {
@@ -77,6 +78,9 @@ const routes: Routes = [
   },{
     path: 'admin/list-admin-users',
     component: ListUsersComponent,
+  },{
+    path: 'admin/content-manager',
+    component: ContentManagementComponent,
   }];
 
 @NgModule({
