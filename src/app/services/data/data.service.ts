@@ -15,6 +15,7 @@ export class DataService {
     email: "",
     is_admin: true
 };
+  product_code: string = ''; 
   constructor() { }
   resetUser(){
     this.current_user = {
@@ -33,5 +34,11 @@ export class DataService {
   }
   public set_user(user: User){
     this.current_user = user;
+  }
+  public get prod_code(): string{
+    return this.product_code;
+  }
+  public set_ProductCode(code: string){
+    this.product_code = code;
   }
 }

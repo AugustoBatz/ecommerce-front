@@ -28,6 +28,12 @@ export class APIService {
         headers: headers1
       }) 
     }
+    getProduct_List(){
+      return this.http.get(this.API_URI + '/user/product');
+    }
+    getProduct(){
+      return this.http.get(this.API_URI + '/user/product/detail/' + localStorage.getItem('code'));
+    }
     logout() {
       localStorage.removeItem('auth_token');
       localStorage.removeItem('user');
