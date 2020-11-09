@@ -1,6 +1,8 @@
-import { Component, NgZone, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Purchase } from 'src/app/models/purchasedetail';
+import { Sub_product } from 'src/app/models/sub_product';
 import { AdminserviceService } from 'src/app/services/admin/adminservice.service';
 import {Product_list} from '../../../models/product_list';
 
@@ -11,17 +13,34 @@ import {Product_list} from '../../../models/product_list';
 })
 export class AddStockComponent implements OnInit {
 
-  constructor(private adminService: AdminserviceService, private router: Router,  private ngZone: NgZone) { }
+  constructor(private adminService: AdminserviceService, private router: Router, private initForm: FormBuilder) { }
   @ViewChildren('id') ids:QueryList<any>;
   @ViewChildren('quantity') quantitys:QueryList<any>;
   @ViewChildren('cost') costs:QueryList<any>;
   public product_list: Product_list[];
   public order_list: Purchase[];
+  public sub_product: Sub_product;
+  public sub_productForm: FormGroup;
+  public current_product: Product_list = {
+    id: 0,
+    name: '',
+    code: '', 
+    category: '', 
+    brand: '', 
+    image: '', 
+    subproducts: []
+  };
     ngOnInit(): void {
     if(!this.adminService.logIn){
       this.router.navigate(['admin/sign-in']);
     }
     this.fill_list(); 
+    this.sub_productForm = this.initForm.group({
+      code_product: ['', Validators.required],
+      color: ['', Validators.required],
+      size: ['', Validators.required],
+      price: ['', Validators.required]
+    });
   }
 
   fill_list(){
@@ -29,7 +48,13 @@ export class AddStockComponent implements OnInit {
       (res: Product_list[])=>{
         this.product_list = res;
       },
-      err =>console.log(err)
+      err => {
+        if(err.status == 401){
+        alert('Su sesión ha caducado, por favor vuelva a ingresar');
+        this.router.navigate(['admin/sign-in']);
+        this.adminService.logout();
+        }
+      }
     );
   }
   sendData(index){
@@ -57,16 +82,49 @@ export class AddStockComponent implements OnInit {
             this.fill_list();
           }, 
           err => {
-            if(err.status == 400){
+            if(err.status == 401){
               alert('Su sesión ha caducado, por favor vuelva a ingresar');
               this.router.navigate(['admin/sign-in']);
+              this.adminService.logout();
             }
           }
         )
       }
-      
     }
-    
   }
+  set_currentProduct(prod){
+    this.current_product = prod; 
+    this.sub_productForm.controls['code_product'].setValue(this.current_product.code);
+  }
+  insert_subProduct(){
+    this.sub_product = this.sub_productForm.value;
+    console.log(this.sub_product);
+    this.adminService.insert_subproduct(this.sub_product)
+    .subscribe(
+      res => {
+        alert('Se ha agregado subproducto exitosamente');
+        this.sub_productForm.setValue(
+          {
+            code_product: this.sub_productForm.controls['code_product'].value,
+            color: '', 
+            size: '', 
+            price: ''
+          }
+        )
+        this.fill_list();
+      },
+      err =>{
+        if(err.status == 401){
+          alert('Su sesión ha caducado, por favor vuelva a ingresar');
+          this.router.navigate(['admin/sign-in']);
+          this.adminService.logout();
+        }
+        else{
+          console.log(err);
+        }
+      }
+    )
+  }
+
 
 }
