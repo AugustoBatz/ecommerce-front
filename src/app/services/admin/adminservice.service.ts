@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/models/addproduct';
+import { Content } from 'src/app/models/content';
 import { Login } from 'src/app/models/login_request';
 import { Purchase } from 'src/app/models/purchasedetail';
 import { Sub_product } from 'src/app/models/sub_product';
@@ -46,6 +47,12 @@ export class AdminserviceService {
     return this.http.get(this.API_URI + '/product', {
       headers: headers1
     });
+  }
+  getContentData(){
+    return this.http.get(this.API_URI + '/content/page');
+  }
+  updateData(noPage: string, content: Content){
+    return this.http.put(this.API_URI + '/content/page/page'+noPage, content);
   }
   getProduct_List(){
     let headers1 = new HttpHeaders();
