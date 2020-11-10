@@ -3,16 +3,18 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-      <span class="mr-auto ml-2" id="menu">Menú de Administración</span>
-      <span class="ml-auto mr-2" id="menu">{{this.adminService.user}}</span>
- </nav>
-    <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-light p-4">
-            <div class="navbar-nav ml-auto">
-                <a class="nav-link" routerLink="/admin">Inicio</a>
-                <a class="nav-link" routerLink="/admin/add-product">Agregar productos</a>
-                <a class="nav-link" routerLink="/admin/product-list">Lista de productos</a>
-                <a class="nav-link" routerLink="/admin/add-stock">Agregar Stock</a>
-                <a class="nav-link" (click)="close()">Cerrar Sesión</a>
-        </div>
-      </div>
+    <span class="mr-auto ml-2" id="menu">Menú de Administración</span>
+    <span class="ml-auto mr-2" id="menu">{{this.adminService.user}}</span>
+</nav>
+<div class="collapse" id="navbarToggleExternalContent">
+  <div class="bg-light p-4">
+    <div class="navbar-nav ml-auto">
+      <a class="nav-link" routerLink="/admin">Inicio</a>
+      <a class="nav-link" routerLink="/admin/add-product">Agregar productos</a>
+      <a class="nav-link" routerLink="/admin/product-list">Lista de productos</a>
+      <a class="nav-link" routerLink="/admin/add-stock">Agregar Stock</a>
+      <a class="nav-link" routerLink="/admin/list-admin-users">Modificar usuarios administradores</a>
+      <a class="nav-link" routerLink="/admin/content-manager">Administrar contenido de página</a>
+      <a class="nav-link" (click)="close()">Cerrar Sesión</a>
+  </div>
+</div>
