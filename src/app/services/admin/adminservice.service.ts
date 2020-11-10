@@ -9,7 +9,8 @@ import { Sub_product } from 'src/app/models/sub_product';
   providedIn: 'root'
 })
 export class AdminserviceService {
-  API_URI = 'http://127.0.0.1:8000/api';
+  //API_URI = 'http://127.0.0.1:8000/api';
+  API_URI = 'https://devsys.pythonanywhere.com/api';
   constructor(private http: HttpClient) { }
   login_user(user: Login) {
     let headers1 = new HttpHeaders();
