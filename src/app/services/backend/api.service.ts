@@ -10,7 +10,8 @@ import { DataService } from '../data/data.service';
   providedIn: 'root'
 })
 export class APIService {
-  API_URI = 'http://127.0.0.1:8000/api';
+  //API_URI = 'http://127.0.0.1:8000/api';
+  API_URI = 'https://devsys.pythonanywhere.com/api';
   constructor(private http: HttpClient, private router: Router, private data: DataService) { 
     
   }
