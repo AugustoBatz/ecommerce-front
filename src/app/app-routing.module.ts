@@ -19,6 +19,7 @@ import { CartComponent } from './components/store/cart/cart.component';
 import { ProductComponent } from './components/store/product/product.component';
 import { ListUsersComponent } from './components/admin/list-users/list-users.component';
 import { ContentManagementComponent } from './components/admin/content-management/content-management.component';
+import { ClientListComponent } from './components/admin/client-list/client-list.component';
 
 const routes: Routes = [
   {
@@ -81,6 +82,9 @@ const routes: Routes = [
   },{
     path: 'admin/content-manager',
     component: ContentManagementComponent,
+  },{
+    path: 'admin/client-list',
+    component: ClientListComponent,
   }];
 
 @NgModule({
