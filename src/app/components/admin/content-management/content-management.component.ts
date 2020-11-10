@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentManagementComponent implements OnInit {
 
+  public url = 'https://forestprod.org/global_graphics/default-store-350x350.jpg';
+
   constructor() { }
 
   ngOnInit(): void {

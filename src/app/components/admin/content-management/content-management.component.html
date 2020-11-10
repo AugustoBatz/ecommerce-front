@@ -3,10 +3,129 @@
     <h2>Administrador de contenido</h2>
   </div>
 </section>
-<section>
-  <div style="margin-top: 30px;">
-    <form class="row container center-elements">
+<section style="margin-bottom: 30px;">
+  <div class="container">
+    <form class="row container">
 
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Inicio</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Acerca de</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contacto</a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="container draw-borders">
+            <div class="form-row tab vertical-space">
+              <div class="col-md-4">
+                <label for="exampleFormControlTextarea1">Imagen de contenido #1</label>
+                <img class="img-thumbnail" [src]="url">
+                <input class="productInput" type="file" accept=".png, .jpg, .jpeg">
+              </div>
+              <div class="col-md-8">
+                <label for="exampleFormControlTextarea1">Bloque de contenido #1</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"></textarea>
+              </div>
+            </div>
+            <div class="form-row tab vertical-space">
+              <div class="col-md-4">
+                <label for="exampleFormControlTextarea1">Imagen de contenido #2</label>
+                <img class="img-thumbnail" [src]="url">
+                <input class="productInput" type="file" accept=".png, .jpg, .jpeg">
+              </div>
+              <div class="col-md-8">
+                <label for="exampleFormControlTextarea1">Bloque de contenido #2</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"></textarea>
+              </div>
+            </div>
+            <div class="form-row tab vertical-space">
+              <div class="col-md-4">
+                <label for="exampleFormControlTextarea1">Imagen de contenido #3</label>
+                <img class="img-thumbnail" [src]="url">
+                <input class="productInput" type="file" accept=".png, .jpg, .jpeg">
+              </div>
+              <div class="col-md-8">
+                <label for="exampleFormControlTextarea1">Bloque de contenido #3</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"></textarea>
+              </div>
+            </div>
+            <div class="center-elements">
+              <button class="custom-button">Confirmar cambios</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="container draw-borders">
+            <div class="form-row tab vertical-space">
+              <div class="col-md-4">
+                <label for="exampleFormControlTextarea1">Imagen de contenido #1</label>
+                <img class="img-thumbnail" [src]="url">
+                <input class="productInput" type="file" accept=".png, .jpg, .jpeg">
+              </div>
+              <div class="col-md-8">
+                <label for="exampleFormControlTextarea1">Bloque de contenido #1</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"></textarea>
+              </div>
+            </div>
+            <div class="form-row tab vertical-space">
+              <div class="col-md-4">
+                <label for="exampleFormControlTextarea1">Imagen de contenido #2</label>
+                <img class="img-thumbnail" [src]="url">
+                <input class="productInput" type="file" accept=".png, .jpg, .jpeg">
+              </div>
+              <div class="col-md-8">
+                <label for="exampleFormControlTextarea1">Bloque de contenido #2</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"></textarea>
+              </div>
+            </div>
+            <div class="form-row tab vertical-space">
+              <div class="col-md-4">
+                <label for="exampleFormControlTextarea1">Imagen de contenido #3</label>
+                <img class="img-thumbnail" [src]="url">
+                <input class="productInput" type="file" accept=".png, .jpg, .jpeg">
+              </div>
+              <div class="col-md-8">
+                <label for="exampleFormControlTextarea1">Bloque de contenido #3</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"></textarea>
+              </div>
+            </div>
+            <div class="center-elements">
+              <button class="custom-button">Confirmar cambios</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+          <div class="container draw-borders">
+            <div class="form-row tab vertical-space">
+              <div class="col-md-12">
+                <label for="exampleFormControlTextarea1">Bloque de contenido #1</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"></textarea>
+              </div>
+            </div>
+            <div class="form-row tab vertical-space">
+              <div class="col-md-12">
+                <label for="exampleFormControlTextarea1">Bloque de contenido #2</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"></textarea>
+              </div>
+            </div>
+            <div class="form-row tab vertical-space">
+              <div class="col-md-12">
+                <label for="exampleFormControlTextarea1">Bloque de contenido #3</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"></textarea>
+              </div>
+            </div>
+            <div class="center-elements">
+              <button class="custom-button">Confirmar cambios</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
 </section>
