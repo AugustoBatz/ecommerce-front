@@ -47,6 +47,9 @@ export class APIService {
         headers: headers1
       });
     }
+    getContentData(noPage: string){
+      return this.http.get(this.API_URI + '/content/page/page'+noPage);
+    }
    
     public get logIn(): boolean {
       return (localStorage.getItem('auth_token') !== null);

@@ -1,64 +1,63 @@
-<div class="container">
-    <br>
-    <br>
-    <div class="row mt-5">
-        <div class="col">
-            <img class="img-thumbnail ml-auto mr-auto" [src]="current_product.image">
-            <h2 class="ml-auto mr-auto">{{current_product.name}}</h2>
-            <hr>
-            <h5>Marca: {{current_product.brand}}</h5>
-            <h5>Categoría: {{current_product.category}}</h5>
-            <div class="row">
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Color</th>
-                        <th scope="col">Tallas</th>
-                        <th scope="col">Unidades Disponibles</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let item of current_product.details">
-                        <th scope="row" *ngIf="item.quantity > 0">{{item.color.color}}</th>
-                        <td class="ml-5" *ngIf="item.quantity > 0" >{{item.size.size}}</td>
-                        <td class="ml-5" *ngIf="item.quantity > 0">{{item.quantity}}</td>
-                      </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="col">
-            <h2>Detalles de Compra</h2>
-            <hr>
-            <label><b>Color</b> - <b>Talla</b> - <b>Precio</b></label>
-            <div class="form-check" *ngFor="let item of current_product.details">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="{{item.color.id}}" value='{{item.color.color}}' *ngIf="item.quantity > 0" (change)="set_max(item.quantity); set_product(item.color.color, item.size.size)">
-              <label class="form-check-label" [attr.for]="item.color.id" *ngIf="item.quantity > 0">
-                {{item.color.color}} - {{item.size.size}} - {{item.price}}
-              </label>
-            </div>
-            <!---
-              <label class="mr-sm-2" for="colors">Color</label>
-              <input list="colors-list" id="colors">
-              <datalist id="colors-list">
-                <option *ngFor="let item of current_product.details" [attr.value]="item.color.color">
-              </datalist> 
-              <label class="mr-sm-2" for="sizes">Talla</label>
-              <input list="size-list" id="sizes">
-              <datalist id="size-list">
-                <option *ngFor="let item of current_product.details" [attr.value]="item.size.size">
-              </datalist> 
-              
-            -->
-            
-            <br>
-            <br>
-            <label for="cantidad" *ngIf="maxnum > 0">Cantidad</label>
-            <label  *ngIf="maxnum == 0">No hay Stock disponible de este producto</label>
-            <label  *ngIf="maxnum == -1">Seleccione un Producto</label>
-            <input type="number" placeholder="Cantidad" id="cantidad" min="0" [(ngModel)]="quantity" [attr.max]="maxnum" *ngIf="maxnum > 0" (change)="disabled = false">
-            <button type="button" class="btn btn-warning" style="width: 100%" *ngIf="disabled || quantity==0" disabled="true">Agregar al Carrito</button>
-            <button type="button" class="btn btn-warning" style="width: 100%" *ngIf="!disabled && quantity>0" (click)="insert()">Agregar al Carrito</button>
-        </div>
+<section id="product-header">
+  <div class="container">
+    <h2>Detalles de compra</h2>
+  </div>
+</section>
+<div class="container" style="margin-bottom: 30px;">
+  <div class="row mt-5">
+    <div class="col">
+      <img class="img-thumbnail ml-auto mr-auto" [src]="current_product.image">
     </div>
+    <div class="col">
+      <div class="center-elements" id="product-title" >
+        <h2 class="ml-auto mr-auto ">{{current_product.name}}</h2>
+      </div>
+      <div style="margin-bottom: 20px; text-align: center;">
+        <h5>Marca: {{current_product.brand}}</h5>
+        <h5>Categoría: {{current_product.category}}</h5>
+      </div>
+      <div class="row">
+        <table class="table">
+          <thead>
+            <tr style="text-align: center;">
+              <th scope="col">Escoger</th>
+              <th scope="col">Color</th>
+              <th scope="col">Tallas</th>
+              <th scope="col">Unidades Disponibles</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of current_product.details" style="text-align: center;">
+            <tr>
+              <input class="form-check-input" style="padding-top: 15px;" type="radio" name="exampleRadios" id="{{item.color.id}}" value='{{item.color.color}}' *ngIf="item.quantity > 0" (change)="set_max(item.quantity); set_product(item.color.color, item.size.size)">
+              <td scope="ml-5" *ngIf="item.quantity > 0">{{item.color.color}}</td>
+              <td class="ml-5" *ngIf="item.quantity > 0" >{{item.size.size}}</td>
+              <td class="ml-5" *ngIf="item.quantity > 0">{{item.quantity}}</td>
+              <td class="ml-5" *ngIf="item.quantity > 0">Q.{{item.price}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+          <!---
+            <label class="mr-sm-2" for="colors">Color</label>
+            <input list="colors-list" id="colors">
+            <datalist id="colors-list">
+              <option *ngFor="let item of current_product.details" [attr.value]="item.color.color">
+            </datalist>
+            <label class="mr-sm-2" for="sizes">Talla</label>
+            <input list="size-list" id="sizes">
+            <datalist id="size-list">
+              <option *ngFor="let item of current_product.details" [attr.value]="item.size.size">
+            </datalist>
+
+          -->
+      <label for="cantidad" *ngIf="maxnum > 0" style="margin-bottom: 20px; text-align: right;">Cantidad: </label>
+      <label  *ngIf="maxnum == 0">No hay Stock disponible de este producto</label>
+      <label  *ngIf="maxnum == -1">Seleccione un Producto</label>
+      <input type="number" placeholder="Cantidad" id="cantidad" min="0" [(ngModel)]="quantity" [attr.max]="maxnum" *ngIf="maxnum > 0" (change)="disabled = false">
+      <button type="button" class="btn btn-warning" style="width: 100%" *ngIf="disabled || quantity==0" disabled="true">Agregar al Carrito</button>
+      <button type="button" class="btn btn-warning" style="width: 100%" *ngIf="!disabled && quantity>0" (click)="insert()">Agregar al Carrito</button>
+    </div>
+  </div>
 </div>
+
