@@ -15,37 +15,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr *ngFor="let item of this.cart.items">
               <td>
                   <div class="row">
                       <div class="col-sm-6">
-                          <img class="cart-img" src="../../../../assets/clothes4.jpg">
+                          <img class="cart-img" [src]="item.product_detail.image">
                       </div>
                       <div class="col-sm-6">
-                          <p class="pro-name">Vestido Embroidery Floral</p>
-                          <p class="pro-description">Rosa, talla S</p>
+                          <h2>{{item.product_detail.name}}</h2>
+                          <p class="pro-description">Color: {{item.product_detail.color}}, Talla: {{item.product_detail.size}} </p>
                       </div>
                   </div>
               </td>
-              <td><input class="input" type="number" value="1"/></td>
-              <td class="pro-description">Q560.00</td>
-              <td class="pro-description">Q560.00</td>
-          </tr>
-          <tr>
-              <td>
-                  <div class="row">
-                      <div class="col-sm-6">
-                          <img class="cart-img" src="../../../../assets/clothes5.jpg">
-                      </div>
-                      <div class="col-sm-6">
-                          <p class="pro-name">Blazer Mine</p>
-                          <p class="pro-description">Turquesa, talla S</p>
-                      </div>
-                  </div>
-              </td>
-              <td><input class="input" type="number" value="1"/></td>
-              <td class="pro-description">Q200.00</td>
-              <td class="pro-description">Q200.00</td>
+              <td><h4>{{item.quantity}}</h4></td>
+              <td class="pro-description"><h4>Q{{item.price}}</h4></td>
+              <td class="pro-description"><h4>Q{{item.sub_total}}</h4></td>
           </tr>
         </tbody>
       </table>
@@ -53,7 +37,7 @@
 
       <div class="card alinear col-4">
           <div class="card-header bg-transparent">
-            Subtotal Q760
+            Subtotal Q{{this.cart.sub_total}}
           </div>
 
           <div class="card-footer text-muted">
