@@ -15,7 +15,7 @@
     </form>
     <a class="btn btn-outline-dark ml-2 notification " *ngIf="logged()" routerLink="/cart" type="button"  aria-haspopup="true" aria-expanded="false">
       <i class="fas fa-shopping-cart"></i>
-      <span class="badge">3</span>
+      <span class="badge" >{{getItems()}}</span>
     </a>
     <div class="dropdown mr-5 ml-2">
        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="!logged()">
