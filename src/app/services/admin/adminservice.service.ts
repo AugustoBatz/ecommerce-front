@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/models/addproduct';
+import { Admin } from 'src/app/models/admin_user';
 import { Content } from 'src/app/models/content';
 import { Login } from 'src/app/models/login_request';
 import { Purchase } from 'src/app/models/purchasedetail';
@@ -10,8 +11,8 @@ import { Sub_product } from 'src/app/models/sub_product';
   providedIn: 'root'
 })
 export class AdminserviceService {
-  //API_URI = 'http://127.0.0.1:8000/api';
-  API_URI = 'https://devsys.pythonanywhere.com/api';
+  API_URI = 'http://127.0.0.1:8000/api';
+  //API_URI = 'https://devsys.pythonanywhere.com/api';
   constructor(private http: HttpClient) { }
   login_user(user: Login) {
     let headers1 = new HttpHeaders();
@@ -66,6 +67,21 @@ export class AdminserviceService {
     headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'))
     headers1 = headers1.set('mock', 'false');
     return this.http.get(this.API_URI + '/admin', {
+      headers: headers1
+    });
+  }
+  getAdmin_user(username: string){
+    let headers1 = new HttpHeaders();
+    headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'));
+    return this.http.get(this.API_URI + '/admin/'+username, {
+      headers: headers1
+    });
+  }
+  updateAdmin_user(username: string, user: Admin){
+    let headers1 = new HttpHeaders();
+    headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'))
+    headers1 = headers1.set('mock', 'False');
+    return this.http.put(this.API_URI + '/admin/' + username, user, {
       headers: headers1
     });
   }
