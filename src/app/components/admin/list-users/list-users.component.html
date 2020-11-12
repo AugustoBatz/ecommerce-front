@@ -17,13 +17,13 @@
             <th scope="col">Eliminar</th>
           </tr>
 
-          <tr class="list-items">
-            <th scope="col">texto nombre</th>
-            <th scope="col">texto apellido</th>
-            <th scope="col">texto usuario</th>
-            <th scope="col">texto correo</th>
+          <tr class="list-items" *ngFor="let admin of admin_list">
+            <th scope="col">{{admin.first_name}}</th>
+            <th scope="col">{{admin.last_name}}</th>
+            <th scope="col">{{admin.username}}</th>
+            <th scope="col">{{admin.email}}</th>
             <th scope="col">
-              <button class = "list-buttons">Editar</button>
+              <button class = "list-buttons" data-toggle="modal" data-target="#exampleModalCenter" (click)="getAdmin(admin.username)">Editar</button>
             </th>
             <th scope="col">
               <button class = "list-buttons">Eliminar</button>
@@ -39,3 +39,39 @@
 
   </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Usuario: </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <label for="updatefname">Nombres</label>
+          <input type="text" placeholder="Nombre" [(ngModel)]="update_admin.first_name" name="first" id="updatefname" class="form-control"> 
+          <label for="updatelname" >Apellidos</label>
+          <input type="text" placeholder="Apellido" [(ngModel)]="update_admin.last_name" name="last" id="updatelname" class="form-control"> 
+          <label for="updatephone" >Teléfono</label>
+          <input type="text" placeholder="Teléfono" [(ngModel)]="update_admin.phone" name="phone" id="updatephone" class="form-control">
+          <label for="updateaddress">Dirección</label> 
+          <input type="text" placeholder="Dirección" [(ngModel)]="update_admin.address_a" name="addressa" id="updateaddress" class="form-control">
+          <label for="updatecity">Ciudad</label> 
+          <input type="text" placeholder="Ciudad" [(ngModel)]="update_admin.address_b" name="addressa"  id="updatecity" class="form-control">
+          <label for="updateemail">Correo Electrónico</label> 
+          <input type="text" placeholder="Correo" [(ngModel)]="update_admin.email" name="email" id="updateemail" class="form-control">
+          <label for="updateusername">Nombre de usuario</label> 
+          <input type="text" placeholder="Nombre de Usuario" [(ngModel)]="update_admin.username" name="username" id="updateusername" class="form-control"> 
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success" (click)="updateAdmin()">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
