@@ -61,6 +61,14 @@ export class AdminserviceService {
       headers: headers1
     });
   }
+  getAdmin_List(){
+    let headers1 = new HttpHeaders();
+    headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'))
+    headers1 = headers1.set('mock', 'false');
+    return this.http.get(this.API_URI + '/admin', {
+      headers: headers1
+    });
+  }
   subproductData(code: String){
     let headers1 = new HttpHeaders();
     headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'));
