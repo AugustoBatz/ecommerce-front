@@ -21,7 +21,6 @@ export class ListProductsComponent implements OnInit {
     .subscribe(
       (res:Catalog[]) => {
         this.catalog = res;
-        console.log(this.catalog);
       },
       err=>console.log(err)
     )
