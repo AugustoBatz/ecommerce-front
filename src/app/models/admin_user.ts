@@ -5,6 +5,6 @@ export interface Admin {
     address_a: string,
     address_b: string,
     email: string,
-    is_admin: boolean,
+    is_admin?: boolean,
     username: string
 }
