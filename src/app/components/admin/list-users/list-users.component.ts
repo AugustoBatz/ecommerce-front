@@ -9,6 +9,7 @@ import { AdminserviceService } from 'src/app/services/admin/adminservice.service
 })
 export class ListUsersComponent implements OnInit {
   public admin_list: Admin[] = []; 
+  public username_toUpdate: string = '';
   public update_admin: Admin ={
     first_name: '',
     last_name: '', 
@@ -16,7 +17,15 @@ export class ListUsersComponent implements OnInit {
     address_a: '',
     address_b: '',
     email: '',
-    is_admin: false,
+    username: ''
+  }
+  public insert_admin: Admin={
+    first_name: '',
+    last_name: '', 
+    phone: '',
+    address_a: '',
+    address_b: '',
+    email: '',
     username: ''
   }
   constructor(private adminService: AdminserviceService) { }
@@ -29,12 +38,32 @@ export class ListUsersComponent implements OnInit {
     .subscribe(
       (res: Admin[])=>{
         this.admin_list = res;
+
       },
       err => console.log(err)
     );
   }
   getAdmin(username: string){
-
+    this.adminService.getAdmin_user(username)
+    .subscribe(
+      (res:Admin) => {
+        this.update_admin = res; 
+        this.username_toUpdate = this.update_admin.username;
+      },
+      err=>console.log(err)
+    );
+  }
+  updateAdmin(){
+    this.adminService.updateAdmin_user(this.username_toUpdate, this.update_admin)
+    .subscribe(
+      res=> {
+        console.log(res);
+        this.getAdmins();
+      },
+      err=> {
+        console.log(err.error.phone);
+      }
+    );
   }
 
 }
