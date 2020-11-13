@@ -129,6 +129,12 @@ export class AddProductComponent implements OnInit {
         if (err.status == 400){
           alert("Producto repetido");
         }
+        if (err.status == 500){
+          alert("Imagen Demasiado Pesada");
+        }
+        if (err.status == 401){
+          this.adminService.logout();
+        }
       }
     )
   }
