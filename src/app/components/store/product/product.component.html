@@ -52,18 +52,26 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Iniciar Sesión</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form [formGroup]="signInForm"  *ngIf="!logged()">
+              <label for="username">Nombre de usuario</label>
+              <input class="form-control" type="text" placeholder="Nombre de usuario" id="username" formControlName="username">
+              <label for="password">Contraseña</label>
+              <input class="form-control" type="password" placeholder="Contraseña" id="password" formControlName="password">
+              <button class="btn btn-success mb-4" type="submit" [disabled]="signInForm.invalid" (click)="validation()">Ingresar</button>
+              <label style="color: red;" *ngIf="!this.correct_login">Datos de ingreso incorrectos</label>
+        </form>
+        <div class="container" *ngIf="logged()">
+            <h3 style="text-align: center;"> Sesión iniciada, correctamente. Puede Cerrar esta ventana y confirmar su compra</h3>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
     </div>
   </div>
 </div>
