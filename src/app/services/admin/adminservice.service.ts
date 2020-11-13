@@ -6,6 +6,7 @@ import { Content } from 'src/app/models/content';
 import { Login } from 'src/app/models/login_request';
 import { Purchase } from 'src/app/models/purchasedetail';
 import { Sub_product } from 'src/app/models/sub_product';
+import { Signup } from 'src/app/models/signup';
 
 @Injectable({
   providedIn: 'root'
@@ -82,6 +83,21 @@ export class AdminserviceService {
     headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'))
     headers1 = headers1.set('mock', 'False');
     return this.http.put(this.API_URI + '/admin/' + username, user, {
+      headers: headers1
+    });
+  }
+  insertAdmin_user(user: Signup){
+    let headers1 = new HttpHeaders();
+    headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'))
+    headers1 = headers1.set('mock', 'False');
+    return this.http.post(this.API_URI + '/admin', user, {
+      headers: headers1
+    });
+  } 
+  deleteAdmin_user(username: string){
+    let headers1 = new HttpHeaders();
+    headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'));
+    return this.http.delete(this.API_URI + '/admin/'+username, {
       headers: headers1
     });
   }
