@@ -5,6 +5,7 @@ import {Signup} from '../../models/signup';
 import { Login } from 'src/app/models/login_request';
 import { DataService } from '../data/data.service';
 import { Sale } from 'src/app/models/addsale';
+import { Contact } from 'src/app/models/contact';
 
 
 @Injectable({
@@ -66,6 +67,9 @@ export class APIService {
       return this.http.post(this.API_URI + '/sale', sale, {
         headers: headers1
       });
+    }
+    postContact(message: Contact){
+      return this.http.post(this.API_URI + '/contactus', message);
     }
    
     public get logIn(): boolean {
