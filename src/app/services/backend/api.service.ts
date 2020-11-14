@@ -61,6 +61,9 @@ export class APIService {
         headers: headers1
       });
     }
+    passwordRecovery(email){
+      return this.http.post(this.API_URI + '/recover', email);
+    }
     addSale(sale: Sale){
       let headers1 = new HttpHeaders();
       headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('auth_token'));
