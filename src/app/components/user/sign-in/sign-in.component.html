@@ -11,8 +11,43 @@
             <input class="signUpInput" type="password" placeholder="Contraseña" formControlName="password">
             <button class="btn btn-success mb-4" type="submit" [disabled]="signInForm.invalid" (click)="validation()">Ingresar</button>
             <label style="color: red;" *ngIf="!this.correct_login">Datos de ingreso incorrectos</label>
+            <a href="#" data-toggle="modal" data-target="#recoveryModal">
+                ¿Olvidaste tu contraseña?
+            </a>
+            <br>
+
         </div>
 </form>
 <div class="container" *ngIf="logged()">
     <h1 style="text-align: center;"> <i class="fas fa-skull"></i> Usted ya ha iniciado sesión, para ingresar con un nuevo usuario cierre sesión. <i class="fas fa-skull"></i></h1>
 </div>
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="recoveryModal" tabindex="-1" role="dialog" aria-labelledby="recoveryModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Ingresa el correo electrónico asociado a tu cuenta para recuperar tu contraseña</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="recoveryForm" *ngIf="!email_sended">
+                <label for="rpass">Correo Electrónico</label>
+                <input type="email" id="rpass" class="form-control" placeholder="ejemplo@correo.com" formControlName="email"> 
+                <label *ngIf="!correct_email" style="color: red;" >Ingrese un correo electrónico valido</label>
+            </form>
+            <label *ngIf="email_sended">Se le ha enviado un correo con una contraseña nueva con la que puede ingresar a la aplicación</label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" *ngIf="!email_sended" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" *ngIf="!email_sended"[disabled]="recoveryForm.invalid" (click)="password()" >Recuperar</button>
+          <button type="button" class="btn btn-success" *ngIf="email_sended" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
