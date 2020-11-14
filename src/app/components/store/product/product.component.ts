@@ -76,6 +76,7 @@ export class ProductComponent implements OnInit {
           this.apiService.getCart().subscribe(
             (res: Cart) => {
               localStorage.setItem('items', res.items.length.toString());
+              alert("se ha agregdo el producto a su carrito");
             },
             err => console.log(err)
           );

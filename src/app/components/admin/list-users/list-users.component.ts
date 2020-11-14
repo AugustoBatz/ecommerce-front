@@ -3,6 +3,7 @@ import { Admin } from 'src/app/models/admin_user';
 import { AdminserviceService } from 'src/app/services/admin/adminservice.service';
 import { Signup } from 'src/app/models/signup';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-users',
@@ -35,7 +36,7 @@ export class ListUsersComponent implements OnInit {
   }
   signUpForm: FormGroup;
   
-  constructor(private adminService: AdminserviceService, private initForm: FormBuilder) { }
+  constructor(private adminService: AdminserviceService, private initForm: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.getAdmins();
@@ -49,6 +50,9 @@ export class ListUsersComponent implements OnInit {
       password: ['', Validators.required],
       username: ['', Validators.required]
     })
+    if(!this.adminService.logIn){
+      this.router.navigate(['admin/sign-in']);
+    }
   }
   getAdmins(){
     this.adminService.getAdmin_List()
