@@ -1,24 +1,43 @@
 
-<form [formGroup]="editForm">
-    Value: {{ editForm.value | json }}
-    <hr>
-    <div class="container" id="edit-form" >
-        <div id= "edit-form-title">
-            <h2>Editar Perfil</h2>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form [formGroup]="editForm">
+                <hr>
+                <div class="container" id="edit-form" >
+                    <div id= "edit-form-title">
+                        <h2>Editar Perfil</h2>
+                    </div>
+                    <h5><u>Datos</u></h5>
+                    <input class="editInput" type="text" placeholder="Nombre" formControlName="first_name" (change)="modify_user.first_name = editForm.controls['first_name'].value">
+                    <input class="editInput" type="text" placeholder="Apellido" formControlName="last_name" (change)="modify_user.last_name = editForm.controls['last_name'].value">
+                    <input class="editInput" type="text" placeholder="Telefono" formControlName="phone" (change)="modify_user.phone = editForm.controls['phone'].value">
+                    <h5><u>Dirección</u></h5>
+                    <input class="editInput" type="text" placeholder="Dirección" formControlName="address_a" (change)="modify_user.address_a = editForm.controls['address_a'].value">
+                    <input class="editInput" type="text" placeholder="Ciudad" formControlName="address_b" (change)="modify_user.address_b = editForm.controls['address_b'].value">
+                    <button class="btn btn-primary" [disabled]="editForm.invalid" (click)="modificar()">Actualizar Datos</button>
+                    <br>
+                </div>
+            </form>
         </div>
-        <h5><u>Datos</u></h5>
-        <input class="editInput" type="text" placeholder="Nombre" formControlName="first_name">
-        <input class="editInput" type="text" placeholder="Apellido" formControlName="last_name">
-        <input class="editInput" type="email" placeholder="Correo Electrónico" formControlName="email">
-        <input class="editInput" type="password" id="password" placeholder="Contraseña" formControlName="password">
-        <input class="editInput" type="password" id="confirmPassword" placeholder="Repetir contraseña" formControlName="confirmPassword">
-        <label class="error" *ngIf="!this.match">Las contraseñas no coinciden</label>
-        <input class="editInput" type="text" placeholder="Telefono" formControlName="phone">
-        <h5><u>Dirección</u></h5>
-        <input class="editInput" type="text" placeholder="Dirección" formControlName="address_a">
-        <input class="editInput" type="text" placeholder="Código de Área" formControlName="address_b">
-        <input class="editInput" type="text" placeholder="Nombre de Usuario" formControlName="username">
-        <button class="editButton" [disabled]="editForm.invalid" (click)="modificar()">Actualizar Datos</button>
-        
+        <div class="col">
+            <form [formGroup]="passwordForm">
+                <hr>
+                <div class="container" id="edit-form" >
+                    <div id= "edit-form-title">
+                        <h2>Cambiar Contraseña</h2>
+                    </div>
+                    <h5><u>Datos</u></h5>
+                    <input class="editInput" type="password" id="password" placeholder="Contraseña" formControlName="password">
+                    <input class="editInput" type="password" id="confirmPassword" placeholder="Repetir contraseña" formControlName="confirmPassword">
+                    <label class="error" *ngIf="!this.match">Las contraseñas no coinciden</label>
+                    <button class="btn btn-primary" [disabled]="passwordForm.invalid  || match != true" (click)="password()">Actualizar Contraseña</button>
+                    <br>
+                </div>
+            </form>
+        </div>
     </div>
-</form>
+    
+    
+
+</div>
