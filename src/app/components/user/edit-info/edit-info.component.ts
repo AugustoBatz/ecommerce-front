@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Edit } from 'src/app/models/edit_info';
 import { Signup } from 'src/app/models/signup';
+import { APIService } from 'src/app/services/backend/api.service';
 import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
@@ -11,20 +13,19 @@ import { DataService } from 'src/app/services/data/data.service';
 })
 export class EditInfoComponent implements OnInit {
   editForm: FormGroup; 
+  passwordForm: FormGroup; 
   match: boolean = true; 
-  modify_user: Signup = {
-    first_name: '',
-    last_name: '',
-    phone: '',
-    address_a: '',
-    address_b: '',
-    email: '',
-    password: '',
-    username: ''
+  modify_user: Edit = {
+    first_name: 'null',
+    last_name: 'null',
+    phone: 'null',
+    address_a: 'null',
+    address_b: 'null',
   }; 
   
-  constructor(private data: DataService, private initForm: FormBuilder, private router: Router) { }
+  constructor(private data: DataService, private initForm: FormBuilder, private router: Router, private apiService: APIService) { }
 
+  
   ngOnInit(): void {
       this.editForm = this.initForm.group({
         first_name: ['', Validators.required],
@@ -32,10 +33,10 @@ export class EditInfoComponent implements OnInit {
         phone: ['', Validators.required],
         address_a: ['', Validators.required],
         address_b: ['', Validators.required],
-        email: ['', Validators.required],
+      });
+      this.passwordForm = this.initForm.group({
         password: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-        confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-        username: ['', Validators.required]
+        confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(3)])]
       });
       if (this.data.user.username == '')
       {
@@ -52,22 +53,17 @@ export class EditInfoComponent implements OnInit {
       last_name: this.data.user.last_name,
       phone: this.data.user.phone, 
       address_a: this.data.user.address_a,
-      address_b: this.data.user.address_b,
-      email: this.data.user.email, 
-      password: '', 
-      confirmPassword: '',
-      username: this.data.user.username
+      address_b: this.data.user.address_b
     });
-    console.log(this.editForm.value);
   }
   validar(){
-    this.editForm.valueChanges.subscribe(()=>{
-      if(this.editForm.controls['password'].value != this.editForm.controls['confirmPassword'].value)
+    this.passwordForm.valueChanges.subscribe(()=>{
+      if(this.passwordForm.controls['password'].value != this.passwordForm.controls['confirmPassword'].value)
       {
         this.match = false;
         return this.match;
       }
-      if(this.editForm.controls['password'].value == this.editForm.controls['confirmPassword'].value)
+      if(this.passwordForm.controls['password'].value == this.passwordForm.controls['confirmPassword'].value)
       {
         this.match = true;
         return this.match;
@@ -75,18 +71,25 @@ export class EditInfoComponent implements OnInit {
     })
   }
   modificar(){
-    this.modify_user = {
-      first_name: this.editForm.controls['first_name'].value,
-      last_name: this.editForm.controls['last_name'].value,
-      phone: this.editForm.controls['phone'].value,
-      address_a: this.editForm.controls['address_a'].value,
-      address_b: this.editForm.controls['address_b'].value,
-      email: this.editForm.controls['email'].value,
-      password: this.editForm.controls['password'].value,
-      username: this.editForm.controls['username'].value
-    }; 
-    console.log(this.modify_user);
+    this.apiService.editProfile(this.modify_user)
+    .subscribe(
+      res=>alert("Información Actualizada"),
+      err=>console.log(err)
+    );
+  }
+  password(){
+    this.apiService.changePassword({
+      new: this.passwordForm.controls['password'].value
+    })
+    .subscribe(
+      res=>{
+        alert("Contraseña actualizada, por favor ingrese nuevamente"); 
+        this.apiService.logout();
+        this.router.navigate(['sign-in']);
 
+      },
+      err=>console.log(err)
+    )
   }
 }
 
