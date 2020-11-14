@@ -12,8 +12,8 @@ import { Signup } from 'src/app/models/signup';
   providedIn: 'root'
 })
 export class AdminserviceService {
-  API_URI = 'http://127.0.0.1:8000/api';
-  //API_URI = 'https://clothingmecoders.ddns.net/api';
+  //API_URI = 'http://127.0.0.1:8000/api';
+  API_URI = 'https://clothingmecoders.ddns.net/api';
   constructor(private http: HttpClient) { }
   login_user(user: Login) {
     let headers1 = new HttpHeaders();

@@ -12,8 +12,8 @@ import { Contact } from 'src/app/models/contact';
   providedIn: 'root'
 })
 export class APIService {
-  API_URI = 'http://127.0.0.1:8000/api';
-  //API_URI = 'https://clothingmecoders.ddns.net/api';
+  //API_URI = 'http://127.0.0.1:8000/api';
+  API_URI = 'https://clothingmecoders.ddns.net/api';
   constructor(private http: HttpClient, private router: Router, private data: DataService) { 
     
   }
