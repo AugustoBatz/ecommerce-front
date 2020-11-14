@@ -12,7 +12,10 @@ import { DataService } from 'src/app/services/data/data.service';
 })
 export class SignInComponent implements OnInit {
   signInForm: FormGroup; 
+  recoveryForm: FormGroup; 
   login: Login;
+  email_sended: boolean = false; 
+  correct_email: boolean = true; 
   correct_login: boolean = true;
   constructor(private initForm: FormBuilder, private router: Router, private dataService: DataService, private apiService: APIService) { }
 
@@ -21,10 +24,12 @@ export class SignInComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     })
-
-    this.signInForm.valueChanges.subscribe(()=>{this.login = this.signInForm.value;})
+    this.recoveryForm = this.initForm.group({
+      email: ['', Validators.compose([Validators.required, Validators.email])]
+    });
   }
   validation() {
+    this.login = this.signInForm.value; 
     this.apiService.login_user(this.login).subscribe((resp: any) => {
       
       this.router.navigate(['profile']);
@@ -33,7 +38,6 @@ export class SignInComponent implements OnInit {
       this.apiService.getCart().subscribe(
         (res: Cart) => {
           this.dataService.set_ShoppingCart(res);
-          console.log(this.dataService.shopping_cart);
         },
         err => console.log(err)
       );
@@ -43,6 +47,18 @@ export class SignInComponent implements OnInit {
   }
   logged(){
     return this.apiService.logIn;
+  }
+  password(){
+    this.apiService.passwordRecovery(this.recoveryForm.value)
+    .subscribe(
+      res=>{
+        this.email_sended = true; 
+      },
+      err=>{
+        this.email_sended = false; 
+        this.correct_email= false;
+      }
+    );
   }
 
 }
