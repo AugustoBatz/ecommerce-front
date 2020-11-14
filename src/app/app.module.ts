@@ -1,4 +1,4 @@
-//Modulos de angular 
+//Modulos de angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +13,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { AdminSignInComponent } from './components/admin/admin-sign-in/admin-sign-in.component';
 import { MenuComponent } from './components/admin/menu/menu.component';
-//Componentes 
+//Componentes
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/general/navbar/navbar.component';
 import { HeaderComponent } from './components/general/header/header.component';
@@ -26,7 +26,7 @@ import { ContactUsComponent } from './components/general/contact-us/contact-us.c
 import { HomeComponent } from './components/general/home/home.component';
 import { AboutComponent } from './components/general/about/about.component';
 import { CartComponent } from './components/store/cart/cart.component';
-//Servicios 
+//Servicios
 import { APIService } from './services/backend/api.service';
 import {DataService} from './services/data/data.service';
 import { AdminserviceService } from './services/admin/adminservice.service';
@@ -39,6 +39,7 @@ import { ProductComponent } from './components/store/product/product.component';
 import { CheckoutComponent } from './components/store/checkout/checkout.component';
 import { ListUsersComponent } from './components/admin/list-users/list-users.component';
 import { ContentManagementComponent } from './components/admin/content-management/content-management.component';
+import { ClientListComponent } from './components/admin/client-list/client-list.component';
 import { SuccessComponent } from './components/store/success/success.component';
 import { FooterComponent } from './components/general/footer/footer.component';
 
@@ -69,6 +70,7 @@ import { FooterComponent } from './components/general/footer/footer.component';
     CheckoutComponent,
     ListUsersComponent,
     ContentManagementComponent,
+    ClientListComponent,
     SuccessComponent,
     FooterComponent
   ],
