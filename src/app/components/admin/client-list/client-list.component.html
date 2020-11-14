@@ -15,19 +15,15 @@
                 <th scope="col">Teléfono</th>
                 <th scope="col">Dirección</th>
                 <th scope="col">País</th>
-                <th scope="col">Opciones</th>
               </tr>
-              <tr>
-                <td><div> </div></td>
-                <td><div> </div></td>
-                <td><div> </div></td>
-                <td><div> </div></td>
-                <td><div> </div></td>
-                <td><div> </div></td>
-                <td><div> </div></td>
-                <td id="opciones">
-                    <button type="button" class="btn btn-link">Eliminar</button>
-                </td>
+              <tr *ngFor="let client of client_list"> 
+                <td>{{client.first_name}}</td>
+                <td>{{client.last_name}}</td>
+                <td>{{client.username}}</td>
+                <td>{{client.email}}</td>
+                <td>{{client.phone}}</td>
+                <td>{{client.address_a}}</td>
+                <td>{{client.address_b}}</td>
               </tr>
             </thead>
           </table>
