@@ -6,6 +6,7 @@ import { Login } from 'src/app/models/login_request';
 import { DataService } from '../data/data.service';
 import { Sale } from 'src/app/models/addsale';
 import { Contact } from 'src/app/models/contact';
+import { Edit } from 'src/app/models/edit_info';
 
 
 @Injectable({
@@ -63,6 +64,20 @@ export class APIService {
     }
     passwordRecovery(email){
       return this.http.post(this.API_URI + '/recover', email);
+    }
+    changePassword(password){
+      let headers1 = new HttpHeaders();
+      headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('auth_token'));
+      return this.http.post(this.API_URI + '/user/changepass', password, {
+        headers: headers1
+      });
+    }
+    editProfile(changes: Edit){
+      let headers1 = new HttpHeaders();
+      headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('auth_token'));
+      return this.http.post(this.API_URI + '/user/editprofile', changes, {
+        headers: headers1
+      });
     }
     addSale(sale: Sale){
       let headers1 = new HttpHeaders();
