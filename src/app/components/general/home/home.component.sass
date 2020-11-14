@@ -9,7 +9,7 @@ img
   transition: 0.3s ease
   &:hover
     filter: grayscale(0%)
-.carousel-item 
+.carousel-item
   height: 65vh
   min-height: 300px
   background: no-repeat center center scroll
@@ -19,20 +19,19 @@ img
   background-size: cover
 
 
-.card-columns .card 
+.card-columns .card
   display: inline-block
   width: 100%
 
-.card-img-top 
+.card-img-top
   width: 100%
   height: 200px !important //esta es la parte importante para que todas tus card-img tengan la misma medida sin importar el tamaño de la imagen
   border-top-left-radius: calc(0.25rem - 1px)
   border-top-right-radius: calc(0.25rem - 1px)
 a
     text-decoration: none
-h2
-  font-weight: 600
-h1 
+
+h1
   color: $primary
   padding-bottom: 16%
   font-size: 200px
@@ -42,12 +41,14 @@ h1
   text-align: center
   &:hover
     color: $complement
-h2 
-  font-size: 4.5rem
+
+.section-title
+    font-size: 4.5rem
+
 h3
   color: $contrast
 #gallery
-  h2 
+  h2
     color: white
     -webkit-text-stroke: 1.5px $primary
 #product-one
@@ -56,23 +57,23 @@ h3
     color: $primary
     -webkit-text-stroke: 1.5px $contrast
   p
-    color: $contrast    
+    color: $contrast
 #product-two
   background: $base
   h2
     color: $base
-    -webkit-text-stroke: 1.5px $contrast    
-  p 
+    -webkit-text-stroke: 1.5px $contrast
+  p
     color: $contrast
     text-align: right
-  h3 
+  h3
     text-align: right
 #product-three
-  background: $complement    
+  background: $complement
   h2
     color: $complement
-    -webkit-text-stroke: 1.5px $contrast    
-  p 
+    -webkit-text-stroke: 1.5px $contrast
+  p
     color: $contrast
 
 
@@ -85,46 +86,47 @@ footer
   padding: 0
   margin: 0
   border-top: 5px solid $complement
-  p 
+  p
     text-align: center
     color: black
 
-
-
-  
-
 /* Extra small devices (phones, 600px and down) */
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) 
-    h1 
+@media only screen and (max-width: 600px)
+    h1
         font-size: 3rem
-        -webkit-text-stroke: 1px 
+        -webkit-text-stroke: 1px
         text-align: center
-        padding-bottom: 45% 
-@media only screen and (max-width: 400px) 
-    
-    h1    
+        padding-bottom: 45%
+
+@media only screen and (max-width: 500px)
+  .section-title
+    font-size: 2rem
+
+@media only screen and (max-width: 400px)
+
+    h1
         font-size: 2rem
-        -webkit-text-stroke: 0.5px 
+        -webkit-text-stroke: 0.5px
         text-align: center
-        padding-bottom: 45%  
-           
+        padding-bottom: 45%
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) 
-    h1 
-        font-size: 5rem      
+@media only screen and (min-width: 600px)
+    h1
+        font-size: 5rem
         padding-bottom: 35%
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px)
-    h1 
+    h1
         font-size: 6rem
         padding-bottom: 45%
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) 
+@media only screen and (min-width: 992px)
       h1
         font-size: 10.5rem
           padding-bottom: 45%
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) 
-    h1 
+@media only screen and (min-width: 1200px)
+    h1
         padding-bottom: 12%
