@@ -39,6 +39,7 @@ import { ProductComponent } from './components/store/product/product.component';
 import { CheckoutComponent } from './components/store/checkout/checkout.component';
 import { ListUsersComponent } from './components/admin/list-users/list-users.component';
 import { ContentManagementComponent } from './components/admin/content-management/content-management.component';
+import { ClientListComponent } from './components/admin/client-list/client-list.component';
 import { SuccessComponent } from './components/store/success/success.component';
 
 
@@ -68,6 +69,7 @@ import { SuccessComponent } from './components/store/success/success.component';
     CheckoutComponent,
     ListUsersComponent,
     ContentManagementComponent,
+    ClientListComponent,
     SuccessComponent
   ],
   imports: [
