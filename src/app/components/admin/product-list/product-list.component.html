@@ -42,11 +42,11 @@
                           <th scope="col">Precio</th>
                           <th scope="col">Stock</th>
                         </tr>
-                        <tr>
-                          <td><div *ngFor="let item of arreglo"> {{item.size}} </div></td>
-                          <td><div *ngFor="let item of arreglo"> {{item.color}} </div></td>
-                          <td><div *ngFor="let item of arreglo"> {{item.price}} </div></td>
-                          <td><div *ngFor="let item of arreglo"> {{item.quantity}} </div></td>
+                        <tr *ngFor="let item of arreglo">
+                          <td><div> {{item.size}} </div></td>
+                          <td><div> {{item.color}} </div></td>
+                          <td><div> {{item.price}} </div></td>
+                          <td><div> {{item.quantity}} </div></td>
                         </tr>
                       </thead>
                     </table>

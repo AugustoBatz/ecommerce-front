@@ -17,16 +17,16 @@
             <th scope="col">Eliminar</th>
           </tr>
 
-          <tr class="list-items">
-            <th scope="col">texto nombre</th>
-            <th scope="col">texto apellido</th>
-            <th scope="col">texto usuario</th>
-            <th scope="col">texto correo</th>
+          <tr class="list-items" *ngFor="let admin of admin_list">
+            <th scope="col">{{admin.first_name}}</th>
+            <th scope="col">{{admin.last_name}}</th>
+            <th scope="col">{{admin.username}}</th>
+            <th scope="col">{{admin.email}}</th>
             <th scope="col">
-              <button class = "list-buttons">Editar</button>
+              <button class = "list-buttons" data-toggle="modal" data-target="#updateModal" (click)="getAdmin(admin.username)">Editar</button>
             </th>
             <th scope="col">
-              <button class = "list-buttons">Eliminar</button>
+              <button class = "list-buttons" data-toggle="modal" data-target="#deleteModal" *ngIf="admin.username != current_admin" (click)="setDelete(admin.username)">Eliminar</button>
             </th>
           </tr>
         </thead>
@@ -34,8 +34,98 @@
     </form>
 
     <div style="text-align: center;width: 100%;">
-      <button id="button-add">Agregar</button>
+      <button id="button-add" data-toggle="modal" data-target="#insertModal">Agregar</button>
     </div>
 
   </div>
 </section>
+
+<!-- Modal para actualizar-->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Usuario: </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <label for="updatefname">Nombres</label>
+          <input type="text" placeholder="Nombre" [(ngModel)]="update_admin.first_name" name="first" id="updatefname" class="form-control"> 
+          <label for="updatelname" >Apellidos</label>
+          <input type="text" placeholder="Apellido" [(ngModel)]="update_admin.last_name" name="last" id="updatelname" class="form-control"> 
+          <label for="updatephone" >Teléfono</label>
+          <input type="text" placeholder="Teléfono" [(ngModel)]="update_admin.phone" name="phone" id="updatephone" class="form-control">
+          <label for="updateaddress">Dirección</label> 
+          <input type="text" placeholder="Dirección" [(ngModel)]="update_admin.address_a" name="addressa" id="updateaddress" class="form-control">
+          <label for="updatecity">Ciudad</label> 
+          <input type="text" placeholder="Ciudad" [(ngModel)]="update_admin.address_b" name="addressa"  id="updatecity" class="form-control">
+          <label for="updateemail">Correo Electrónico</label> 
+          <input type="email" placeholder="Correo" [(ngModel)]="update_admin.email" name="email" id="updateemail" class="form-control">
+          <label for="updateusername">Nombre de usuario</label> 
+          <input type="text" placeholder="Nombre de Usuario" [(ngModel)]="update_admin.username" name="username" id="updateusername" class="form-control"> 
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success" (click)="updateAdmin()">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal para registrar -->
+<div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Registrar Usuario: </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="signUpForm">
+          <label for="insertfname">Nombres</label>
+          <input type="text" placeholder="Nombre" formControlName="first_name" name="ifirst" id="insertfname" class="form-control" required>  
+          <label for="insertlname" >Apellidos</label>
+          <input type="text" placeholder="Apellido" formControlName="last_name"  name="ilast" id="insertlname" class="form-control"> 
+          <label for="insertphone" >Teléfono</label>
+          <input type="text" placeholder="Teléfono" formControlName="phone"  name="iphone" id="insertphone" class="form-control">
+          <label for="insertaddress">Dirección</label> 
+          <input type="text" placeholder="Dirección" formControlName="address_a"  name="iaddressa" id="insertaddress" class="form-control">
+          <label for="insertcity">Ciudad</label> 
+          <input type="text" placeholder="Ciudad" formControlName="address_b"  name="iaddressa"  id="insertcity" class="form-control">
+          <label for="insertemail">Correo Electrónico</label> 
+          <input type="email" placeholder="Correo" formControlName="email" name="iemail" id="insertemail" class="form-control">
+          <label for="insertpassword">Contraseña</label> 
+          <input type="password" placeholder="Contraseña" formControlName="password" name="ipass" id="insertpassword" class="form-control"> 
+          <label for="insertusername">Nombre de usuario</label> 
+          <input type="text" placeholder="Nombre de Usuario" formControlName="username"  name="iusername" id="insertusername" class="form-control"> 
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success" [disabled]="signUpForm.invalid"  (click)="registerAdmin()">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal para eliminar-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">¿Desea eliminar al usuario: {{username_toDelete}}?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="ml-5 btn btn-danger" (click)="deleteAdmin()">Sí, Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
