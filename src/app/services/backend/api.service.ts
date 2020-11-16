@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Router } from '@angular/router';
 import {Signup} from '../../models/signup';
 import { Login } from 'src/app/models/login_request';
@@ -111,6 +111,19 @@ export class APIService {
       return this.http.post(this.API_URI + '/sale/'+ cart_id, sale, {
         headers: headers1
       });
+    }
+    generateUserHistory(start: string, finish: string){
+      let headers1 = new HttpHeaders();
+      headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('auth_token'));
+      let params1 = new HttpParams(); 
+      params1 = params1.set('date_start', start);
+      params1 = params1.set('date_finish', finish); 
+      return this.http.get(this.API_URI + '/user/reports',
+      {
+        headers: headers1,
+        params: params1
+      }
+      );
     }
     public get logIn(): boolean {
       return (localStorage.getItem('auth_token') !== null);
