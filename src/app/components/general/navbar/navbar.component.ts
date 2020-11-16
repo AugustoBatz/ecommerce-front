@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router: Router, private api: APIService, private dataService: DataService) { }
   login = true;
+  search: string='';
   ngOnInit(): void {
   }
   public cambiar(){
@@ -25,6 +26,9 @@ export class NavbarComponent implements OnInit {
   logout(){
     this.api.logout();
   }
-  
+  searchProduct(){
+    this.dataService.set_Search(this.search);
+    this.router.navigate(['search']);
+  }
 
 }
