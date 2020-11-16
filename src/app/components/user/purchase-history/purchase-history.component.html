@@ -1,41 +1,61 @@
 <div class="container">
-    <br><br>
-    <div class="row"> 
-        <div class="col-5"></div>
-        <div class="col-6"><h3>Historial de compra</h3> <br><br><br><br></div>
-    
-    </div>
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-2">
-          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pills-todo-tab" data-toggle="pill" href="#todos" role="tab" aria-controls="v-pills-todos" aria-selected="true">Todos</a>
-            <a class="nav-link" id="v-pills-enproceso-tab" data-toggle="pill" href="#enproceso" role="tab" aria-controls="v-pills-enproceso" aria-selected="false">En Proceso</a>
-            <a class="nav-link" id="v-pills-enviados-tab" data-toggle="pill" href="#enviados" role="tab" aria-controls="v-pills-enviados" aria-selected="false">Enviados</a>
-            <a class="nav-link" id="v-pills-cancelados-tab" data-toggle="pill" href="#cancelados" role="tab" aria-controls="v-pills-cancelados" aria-selected="false">Cancelados</a>
-          </div>
-        </div>
-        <div class="col-9">
-          <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="todos" role="tabpanel" aria-labelledby="v-pills-todos-tab">
-                
-                <div class="media">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                      <h5 class="mt-0">Pedido NO.</h5>
-                      Descripción del Producto <br>
-                      Fecha: 28/09/2020
-                    </div>
-                  </div>
-            </div>
-            <div class="tab-pane fade" id="enproceso" role="tabpanel" aria-labelledby="v-pills-enproceso-tab">...</div>
-            <div class="tab-pane fade" id="enviados" role="tabpanel" aria-labelledby="v-pills-enviados-tab">...</div>
-            <div class="tab-pane fade" id="cancelados" role="tabpanel" aria-labelledby="v-pills-cancelados-tab">
+  <h1>Historial de Compra:</h1>
+  <br>
+  <div class="row content-align-center">
+      <div class="col">
+          <label for="initialdate">Fecha de inicio</label>
+          <input type="date" id="initialdate" [(ngModel)]="date_start" name="initialdate" (change)="datePickedStart()" min="2020-11-10" class="form-control">
+          <label for="enddate">Fecha de Cierre</label>
+          <input type="date" id="enddate" [(ngModel)]="date_finish" name="enddate" (change)="datePickedFinish()" class="form-control" min="2020-11-16" >
+          <br>
+          <button class="btn btn-warning ml-auto mr-auto" (click)="generateHistory()">Ver Historial de Compra</button>
+          <br>
 
-            </div>
-          </div>
-        </div>
       </div>
-
+  </div>
+  <h2 class="ml-auto mr-auto">Compras: </h2>
+  <br>
+  <div class="row" *ngFor="let register of history">
+      <br>
+      <div class="col">
+            <table class="table">
+              <thead class="thead bg-warning">
+                <tr class="bg-warning content-align-center" style="width: 100%;">
+                  <th>Fecha: {{reformatDate(register.date)}}</th>
+                  <th></th> 
+                  <th></th>
+                  <th>Dirección:</th>
+                  <th>{{register.address}}</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th scope="col">Código</th>
+                  <th scope="col">Producto</th>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Color</th>
+                  <th scope="col">Talla</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">SubTotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let detail of register.sale_detail">
+                  <th>{{detail.code}}</th>
+                  <th>{{detail.product}}</th>
+                  <th>{{detail.brand}}</th>
+                  <th>{{detail.details.color}}</th>
+                  <th>{{detail.details.size}}</th>
+                  <th>{{detail.details.quantity}}</th>
+                  <th>Q.{{detail.details.price}}</th>
+                  <th>Q.{{detail.details.sub_total}}</th>
+                </tr>
+              </tbody>
+            </table>
+          
+      </div>
+  </div>
+  <h2 *ngIf="history.length == 0 && generated">No tiene ninguna compra registrada en estas fechas</h2>
 </div>
-
