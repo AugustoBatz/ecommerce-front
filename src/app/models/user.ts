@@ -6,5 +6,5 @@ export interface User{
     address_a: string,
     address_b: string,
     email: string,
-    is_admin: boolean
+    is_admin?: boolean
 }
