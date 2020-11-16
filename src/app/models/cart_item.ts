@@ -1,4 +1,5 @@
 export interface Item{
+    id: string,
     quantity: number,
     sub_total: number, 
     price: number,
