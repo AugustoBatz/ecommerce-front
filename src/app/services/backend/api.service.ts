@@ -7,6 +7,8 @@ import { DataService } from '../data/data.service';
 import { Sale } from 'src/app/models/addsale';
 import { Contact } from 'src/app/models/contact';
 import { Edit } from 'src/app/models/edit_info';
+import { CheckoutComponent } from 'src/app/components/store/checkout/checkout.component';
+import { Checkout } from 'src/app/models/sale';
 
 
 @Injectable({
@@ -86,10 +88,30 @@ export class APIService {
         headers: headers1
       });
     }
+    search(param: string){
+      let headers1 = new HttpHeaders();
+      headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('auth_token'));
+      return this.http.get(this.API_URI+ '/product/search/'+param, {
+        headers: headers1
+      });
+    }
+    deleteCartItem(item: string){
+      let headers1 = new HttpHeaders();
+      headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('auth_token'));
+      return this.http.delete(this.API_URI+ '/sale/detail/'+item, {
+        headers: headers1
+      });
+    }
     postContact(message: Contact){
       return this.http.post(this.API_URI + '/contactus', message);
     }
-   
+    make_Purchase(cart_id: string, sale: Checkout){
+      let headers1 = new HttpHeaders();
+      headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('auth_token'));
+      return this.http.post(this.API_URI + '/sale/'+ cart_id, sale, {
+        headers: headers1
+      });
+    }
     public get logIn(): boolean {
       return (localStorage.getItem('auth_token') !== null);
     }
