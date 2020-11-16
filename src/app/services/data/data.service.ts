@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cart } from 'src/app/models/shopping_cart';
 import { User } from 'src/app/models/user';
+import { APIService } from '../backend/api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +25,7 @@ export class DataService {
     quantity: 0,
     sub_total: 0
   }; 
+  search: string= ''; 
   constructor() { }
   resetUser(){
     this.current_user = {
@@ -51,6 +54,13 @@ export class DataService {
   public get shopping_cart(): Cart{
     return this.current_cart;
   }
+  public set_Search(product: string){
+    this.search = product; 
+  }
+  public get searchString(): string{
+    return this.search; 
+  }
+ 
   public set_ShoppingCart(cart: Cart){
     this.current_cart = cart;
     localStorage.setItem('cart', this.current_cart.car_id.toString());
