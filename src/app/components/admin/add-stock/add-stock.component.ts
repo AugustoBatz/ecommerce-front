@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -81,11 +82,14 @@ export class AddStockComponent implements OnInit {
             costArray[i].nativeElement.value = 0;
             this.fill_list();
           }, 
-          err => {
+          (err: HttpErrorResponse) => {
             if(err.status == 401){
               alert('Su sesión ha caducado, por favor vuelva a ingresar');
               this.router.navigate(['admin/sign-in']);
               this.adminService.logout();
+            }
+            if(err.status == 400){
+              alert("Talla Repetida");
             }
           }
         )
