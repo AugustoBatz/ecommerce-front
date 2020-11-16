@@ -62,7 +62,6 @@ export class ProductComponent implements OnInit {
   }
   set_product(id: number){
     this.product_detail = id;
-    console.log(this.product_detail);
   }
   insert(){
     if(this.apiService.logIn){
@@ -77,8 +76,9 @@ export class ProductComponent implements OnInit {
             (res: Cart) => {
               localStorage.setItem('items', res.items.length.toString());
               alert("se ha agregdo el producto a su carrito");
+              this.quantity = 0;
             },
-            err => console.log(err)
+            err => alert("Stock insuficiente")
           );
         },
         err=>console.log(err)
