@@ -10,11 +10,15 @@
   <div class="bg-light p-4">
     <div class="navbar-nav ml-auto">
       <a class="nav-link" routerLink="/admin">Inicio</a>
+      <label>Productos</label>
       <a class="nav-link" routerLink="/admin/add-product">Agregar productos</a>
       <a class="nav-link" routerLink="/admin/product-list">Lista de productos</a>
       <a class="nav-link" routerLink="/admin/add-stock">Agregar Stock</a>
+      <label>Usuarios</label>
       <a class="nav-link" routerLink="/admin/list-admin-users">Modificar usuarios administradores</a>
+      <a class="nav-link" routerLink="/admin/client-list">Ver lista de clientes</a>
+      <label>Contenido</label>
       <a class="nav-link" routerLink="/admin/content-manager">Administrar contenido de página</a>
-      <a class="nav-link" (click)="close()">Cerrar Sesión</a>
+      <a class="nav-link" style="color: red;" (click)="close()">Cerrar Sesión</a>
   </div>
 </div>
