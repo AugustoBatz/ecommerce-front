@@ -28,6 +28,7 @@
         <a class="dropdown-item mr-5" routerLink="/sign-in"*ngIf="!logged()"> <i class="fas fa-sign-in-alt"></i> Iniciar Sesion</a>
         <a class="dropdown-item" routerLink="/sign-up"*ngIf="!logged()"> <i class="fas fa-user-plus"></i> Registrarse </a>
         <a class="dropdown-item mr-5" routerLink="/profile" *ngIf="logged()"> <i class="fas fa-user"></i> Perfil</a>
+        <a class="dropdown-item mr-5" routerLink="/history" *ngIf="logged()"> <i class="fas fa-history"></i> Historial de Compra</a>
         <a class="dropdown-item" routerLink="/home"*ngIf="logged()" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
       </div>
     </div>
