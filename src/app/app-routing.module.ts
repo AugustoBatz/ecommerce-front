@@ -23,6 +23,7 @@ import { ClientListComponent } from './components/admin/client-list/client-list.
 import { SuccessComponent } from './components/store/success/success.component';
 import { SearchComponent } from './components/general/search/search.component';
 import { CheckoutComponent } from './components/store/checkout/checkout.component';
+import { ReportsComponent } from './components/admin/reports/reports.component';
 
 const routes: Routes = [
   {
@@ -97,7 +98,11 @@ const routes: Routes = [
   },
   {path: 'store/checkout',
     component: CheckoutComponent,
-  }];
+  },
+  {path: 'admin/reports',
+    component: ReportsComponent,
+  }   
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
