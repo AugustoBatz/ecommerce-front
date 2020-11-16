@@ -21,6 +21,8 @@ import { ListUsersComponent } from './components/admin/list-users/list-users.com
 import { ContentManagementComponent } from './components/admin/content-management/content-management.component';
 import { ClientListComponent } from './components/admin/client-list/client-list.component';
 import { SuccessComponent } from './components/store/success/success.component';
+import { SearchComponent } from './components/general/search/search.component';
+import { CheckoutComponent } from './components/store/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -89,6 +91,12 @@ const routes: Routes = [
   },
   {path: 'store/success',
     component: SuccessComponent,
+  },
+  {path: 'search',
+    component: SearchComponent,
+  },
+  {path: 'store/checkout',
+    component: CheckoutComponent,
   }];
 
 @NgModule({
