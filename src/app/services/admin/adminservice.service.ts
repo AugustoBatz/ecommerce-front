@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/models/addproduct';
 import { Admin } from 'src/app/models/admin_user';
@@ -7,6 +7,7 @@ import { Login } from 'src/app/models/login_request';
 import { Purchase } from 'src/app/models/purchasedetail';
 import { Sub_product } from 'src/app/models/sub_product';
 import { Signup } from 'src/app/models/signup';
+import { parseI18nMeta } from '@angular/compiler/src/render3/view/i18n/meta';
 
 @Injectable({
   providedIn: 'root'
@@ -119,6 +120,19 @@ export class AdminserviceService {
   logout() {
     localStorage.removeItem('admin_token');
     //localStorage.removeItem('user_admin');
+  }
+  generateReportDate(start: string, finish: string){
+    let headers1 = new HttpHeaders();
+    headers1 = headers1.set('Authorization', 'Bearer ' + localStorage.getItem('admin_token'));
+    let params1 = new HttpParams(); 
+    params1 = params1.set('date_start', start);
+    params1 = params1.set('date_finish', finish); 
+    return this.http.get(this.API_URI + '/reports',
+    {
+      headers: headers1,
+      params: params1
+    }
+    );
   }
   public get logIn(): boolean {
     return (localStorage.getItem('admin_token') !== null);
