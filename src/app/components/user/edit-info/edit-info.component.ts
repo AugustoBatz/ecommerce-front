@@ -73,7 +73,12 @@ export class EditInfoComponent implements OnInit {
   modificar(){
     this.apiService.editProfile(this.modify_user)
     .subscribe(
-      res=>alert("Información Actualizada"),
+      res=>
+      {
+        alert("Información Actualizada"); 
+        this.data.resetUser(); 
+        this.router.navigate(["profile"]);
+      },
       err=>console.log(err)
     );
   }
