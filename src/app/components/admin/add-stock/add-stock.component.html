@@ -33,7 +33,7 @@
             <div class="container">
                 <div class="col center-box-text">
                     <h5>Producto: {{product.code}}</h5>
-                    <img class="img-thumbnail" [src]="product.image" style="max-width: 120px;">
+                    <img class="img-thumbnail" [src]="product.image" style="max-width: 120px;" alt="producto">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter" (click)="set_currentProduct(product)">
                         <i class="fas fa-plus-circle"></i> Agregar Subproducto
@@ -100,7 +100,7 @@
         <div class="modal-header container" style="background: #80BFF5">
             <h5 class="modal-title  ml-auto mr-auto" id="exampleModalLongTitle" style="text-align: center; color: white;">Nombre: {{current_product.name}}
                 <br>Código: {{current_product.code}}<br>
-                <br><img class="img-thumbnail" [src]="current_product.image" style="max-width: 120px;">
+                <br><img class="img-thumbnail" [src]="current_product.image" style="max-width: 120px;" alt="producto">
             </h5>
         </div>
         <div class="modal-body">

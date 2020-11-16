@@ -3,9 +3,9 @@
   <br>
   <div class="row content-align-center">
       <div class="col">
-          <label for="initialdate">Fecha de inicio</label>
+          <label for="initialdate">Fecha Inicial</label>
           <input type="date" id="initialdate" [(ngModel)]="date_start" name="initialdate" (change)="datePickedStart()" min="2020-11-10" class="form-control">
-          <label for="enddate">Fecha de Cierre</label>
+          <label for="enddate">Fecha Final</label>
           <input type="date" id="enddate" [(ngModel)]="date_finish" name="enddate" (change)="datePickedFinish()" class="form-control" min="2020-11-16" >
           <br>
           <button class="btn btn-warning ml-auto mr-auto" (click)="generateHistory()">Ver Historial de Compra</button>

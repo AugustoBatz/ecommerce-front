@@ -25,7 +25,7 @@
               </div>--->
             <input class="productInput" type="file" (change)="onFileSelected($event)" accept=".png, .jpg, .jpeg">
             <button class="btn btn-warning mb-4" [disabled]="productForm.invalid" *ngIf="!product_exist()" (click)="insertProduct()">Agregar Producto</button>
-            <img class="img-thumbnail" [src]="url">
+            <img class="img-thumbnail" [src]="url" alt="producto">
             <br>
         </div>
       </form>
