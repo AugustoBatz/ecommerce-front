@@ -43,6 +43,7 @@ import { ClientListComponent } from './components/admin/client-list/client-list.
 import { SuccessComponent } from './components/store/success/success.component';
 import { FooterComponent } from './components/general/footer/footer.component';
 import { SearchComponent } from './components/general/search/search.component';
+import { ReportsComponent } from './components/admin/reports/reports.component';
 
 
 
@@ -74,7 +75,8 @@ import { SearchComponent } from './components/general/search/search.component';
     ClientListComponent,
     SuccessComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
