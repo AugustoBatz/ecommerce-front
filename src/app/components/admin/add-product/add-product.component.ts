@@ -81,6 +81,7 @@ export class AddProductComponent implements OnInit {
       price: ''
     });
     this.purchase_details = [];
+    this.added_product = false;
     this.url='https://forestprod.org/global_graphics/default-store-350x350.jpg';
   }
 
@@ -124,6 +125,7 @@ export class AddProductComponent implements OnInit {
         this.added_product = true;
         alert("Producto agregado correctamente");
         this.sub_productForm.controls['code_product'].setValue(this.product.code);
+        
       },
       err => {
         if (err.status == 400){
