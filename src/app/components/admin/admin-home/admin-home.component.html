@@ -1,0 +1,57 @@
+<section id="admin-header">
+  <div class="container">
+    <h2>Menú de administración</h2>
+  </div>
+</section>
+<div class="container">
+    <br>
+    <br>
+      <div class="row">
+        <div class="col">
+            <button class="btn btn-danger" style="justify-self: center;" type="button" data-toggle="collapse" data-target="#products" aria-expanded="true" aria-controls="products">Productos</button>
+          <div class="collapse show" id="products">
+            <div class="card card-body">
+                <ul class="list-unstyled">
+                    <li><a routerLink="add-product">Agregar Productos</a></li>
+                    <li><a routerLink="product-list">Listar Productos</a></li>
+                    <li><a routerLink="add-stock">Agregar Stock</a></li>
+                </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#users" aria-expanded="true" aria-controls="users">Usuarios</button>
+          <div class="collapse show" id="users">
+            <div class="card card-body">
+              <ul class="list-unstyled">
+                <li><a routerLink="list-admin-users">Modificar usuarios administradores</a></li>
+                <li><a routerLink="client-list">Mostrar lista de usuarios</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+   </div>
+     <div class="row">
+        <div class="col">
+          <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#content" aria-expanded="true" aria-controls="users">Contenido</button>
+          <div class="collapse show" id="content">
+            <div class="card card-body">
+              <ul class="list-unstyled">
+                <li><a routerLink="content-manager">Administrar contenido de página</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#report" aria-expanded="true" aria-controls="users">Reportes</button>
+          <div class="collapse show" id="report">
+            <div class="card card-body">
+              <ul class="list-unstyled">
+                <li><a routerLink="reports">Reportes de ventas</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>

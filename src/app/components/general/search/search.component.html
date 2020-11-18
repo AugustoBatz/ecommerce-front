@@ -1,0 +1,44 @@
+
+<section>
+    <div class="container">
+        <h1>
+            Resultados:
+        </h1>
+        <h3>Coincidencias por Marca: </h3>
+        <div class="form-row" style="margin-right: 0; margin-left: 0;">
+            <div class="col-md-3 custom-column center-form-elements" style="width: 12rem;" *ngFor="let result of results">
+                <div class="custom-card" *ngIf="result.brand.toUpperCase().indexOf(dataService.searchString.toUpperCase()) !== -1 && dataService.searchString !== ''" >
+                    <div class = "custom-container">
+                        <img [src]="result.image" class="card-img-top custom-card-img">
+                        <a class="custom-card-button" (click)="set_product(result.code)">Comprar</a>
+                    </div>
+                    <div class="card-body card-text">
+                        <h5>{{result.name}}</h5>
+                        <p>Marca: {{result.brand}}</p>
+                        <p>Disponibles: {{result.stock}}</p>
+                        <p>Categoría: {{result.category}}</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <h3>Coincidencias por Nombre: </h3>
+        <div class="form-row" style="margin-right: 0; margin-left: 0;">
+            <div class="col-md-3 custom-column center-form-elements" style="width: 12rem;" *ngFor="let result of results">
+                <div class="custom-card"*ngIf="result.name.toUpperCase().indexOf(dataService.searchString.toUpperCase()) !== -1 && dataService.searchString !== '' " >
+                    <div class = "custom-container">
+                        <img [src]="result.image" class="card-img-top custom-card-img">
+                        <a class="custom-card-button" (click)="set_product(result.code)">Comprar</a>
+                    </div>
+                    <div class="card-body card-text">
+                        <h5>{{result.name}}</h5>
+                        <p>Marca: {{result.brand}}</p>
+                        <p>Disponibles: {{result.stock}}</p>
+                        <p>Categoría: {{result.category}}</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div> 
+    </div>
+      
+</section>

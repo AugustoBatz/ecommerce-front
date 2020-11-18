@@ -1,0 +1,136 @@
+$primary: #d62828
+$secondary: #f77f00
+$complement: #fcbf49
+$base: #003049
+$contrast: #e9e6d6
+img
+  max-width: 100%
+  filter: grayscale(100%)
+  transition: 0.3s ease
+  &:hover
+    filter: grayscale(0%)
+.carousel-item
+  height: 65vh
+  min-height: 300px
+  background: no-repeat center center scroll
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  -o-background-size: cover
+  background-size: cover
+
+
+.card-columns .card
+  display: inline-block
+  width: 100%
+
+.card-img-top
+  width: 100%
+  height: 200px !important //esta es la parte importante para que todas tus card-img tengan la misma medida sin importar el tamaño de la imagen
+  border-top-left-radius: calc(0.25rem - 1px)
+  border-top-right-radius: calc(0.25rem - 1px)
+a
+    text-decoration: none
+h2
+  font-weight: 600
+h1
+  color: $primary
+  padding-bottom: 16% 
+  font-size: 200px
+  font-weight: 700
+  text-transform: uppercase
+  text-align: center
+  &:hover
+    color: $complement
+.section-title
+  font-size: 4.5rem
+h3, h5
+  color: $contrast
+h3
+  -webkit-text-stroke: 1.5px $contrast
+#gallery
+  h2
+    color: white
+    -webkit-text-stroke: 1.5px $primary
+#product-one
+  background: $primary
+  h2
+    color: $primary
+    -webkit-text-stroke: 1.5px $contrast
+  p
+    color: $contrast
+#product-two
+  background: $base
+  h2
+    color: $base
+    -webkit-text-stroke: 1.5px $contrast
+  p
+    color: $contrast
+    text-align: right
+  h3
+    text-align: right
+#product-three
+  background: $complement
+  h2
+    color: $complement
+    -webkit-text-stroke: 1.5px $contrast
+  p
+    color: $contrast
+
+
+.section-title
+    text-align: center
+    text-transform: uppercase
+footer
+  height: 60px
+  width: 100%
+  padding: 0
+  margin: 0
+  border-top: 5px solid $complement
+  p
+    text-align: center
+    color: black
+
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px)
+    h1
+        font-size: 3rem
+        -webkit-text-stroke: 1px
+        text-align: center
+        padding-bottom: 45%
+
+@media only screen and (max-width: 500px)
+  .section-title
+    font-size: 2rem
+
+@media only screen and (max-width: 400px)
+
+    h1
+        font-size: 2rem
+        -webkit-text-stroke: 0.5px
+        text-align: center
+        padding-bottom: 45%
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px)
+    h1
+        font-size: 5rem
+        padding-bottom: 35%
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px)
+    h1
+        font-size: 6rem
+        padding-bottom: 45%
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px)
+      h1
+        font-size: 10.5rem
+          padding-bottom: 45%
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px)
+    h1
+        padding-bottom: 12%

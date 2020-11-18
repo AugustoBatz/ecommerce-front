@@ -1,0 +1,60 @@
+<div class="container">
+    <h1>Reporte de Ventas:</h1>
+    <br>
+    <div class="row content-align-center">
+        <div class="col">
+            <label for="initialdate">Fecha de inicio</label>
+            <input type="date" id="initialdate" [(ngModel)]="date_start" name="initialdate" (change)="datePickedStart()" min="2020-11-10" class="form-control">
+            <label for="enddate">Fecha de Cierre</label>
+            <input type="date" id="enddate" [(ngModel)]="date_finish" name="enddate" (change)="datePickedFinish()" class="form-control" min="2020-11-16" >
+            <br>
+            <button class="btn btn-dark ml-auto mr-auto" (click)="generateReport()">Generar Reporte de Ventas</button>
+            <br>
+
+        </div>
+    </div>
+    <h2 class="ml-auto mr-auto">Ventas: </h2>
+    <br>
+    <div class="row" *ngFor="let report of reports">
+        <br>
+        <div class="col">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr class="bg-dark content-align-center" style="width: 100%;">
+                    <th>Fecha: {{reformatDate(report.date)}}</th>
+                    <th>Usuario:</th> 
+                    <th>{{report.user}}</th>
+                    <th>Dirección:</th>
+                    <th>{{report.address}}</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Talla</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">SubTotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let detail of report.sale_detail">
+                    <th>{{detail.code}}</th>
+                    <th>{{detail.product}}</th>
+                    <th>{{detail.brand}}</th>
+                    <th>{{detail.details.color}}</th>
+                    <th>{{detail.details.size}}</th>
+                    <th>{{detail.details.quantity}}</th>
+                    <th>Q.{{detail.details.price}}</th>
+                    <th>Q.{{detail.details.sub_total}}</th>
+                  </tr>
+                </tbody>
+              </table>
+            
+        </div>
+    </div>
+</div>

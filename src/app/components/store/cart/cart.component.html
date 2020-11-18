@@ -1,0 +1,98 @@
+<section id="title">
+  <div class="container">
+    <h2>Carrito de compras</h2>
+  </div>
+</section>
+<section>
+  <form class="container" id="principal-form">
+      <table class="table">
+        <thead>
+          <tr>
+              <th scope="col" width="400px">Producto</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of this.cart.items">
+              <td>
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <img class="cart-img" [src]="item.product_detail.image">
+                      </div>
+                      <div class="col-sm-6">
+                          <h3>{{item.product_detail.name}}</h3>
+                          <p class="pro-description">Color: {{item.product_detail.color}}, Talla: {{item.product_detail.size}} </p>
+                      </div>
+                  </div>
+              </td>
+              <td><h4>{{item.quantity}}</h4></td>
+              <td class="pro-description"><h4>Q{{item.price}}</h4></td>
+              <td class="pro-description">
+                <h4>Q{{item.sub_total}}</h4> 
+            </td>
+            
+            <br>
+            <button type="button" class="btn btn-danger" data-toggle="modal" style="border-radius: 50%; margin-left: 5px;" data-target="#confirmation" (click)="set_Item(item.id, item.product_detail.name)">
+              <i class="fas fa-window-close"></i>
+            </button>
+          </tr>
+            <h3 *ngIf="this.cart.quantity == 0" style="color: black; width: 100%;">No hay productos en tu carrito actualmente</h3>
+        </tbody>
+      </table>
+      <!-- Card -->
+
+      <div class="card alinear col-4">
+          <div class="card-header bg-transparent" style="margin: 10%;">
+            Subtotal Q{{this.cart.sub_total}}
+          </div>
+
+          <div class="card-footer text-muted">
+            Envío Q50
+          </div>
+          <div class="card-body text-center">
+              <h5 class="card-title">Total: Q {{this.cart.sub_total}}</h5>
+              <a href="#" class=" btn btn-warning btn-lg btn-block" routerLink="/store/checkout">Comprar</a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+  </form>
+</section>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="text-align: center;">Eliminar el producto: {{delete_item.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ml-auto mr-auto" *ngIf="!successful_delete">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger ml-4" (click)="deleteCartItem()">Eliminar Artículo</button>
+      </div>
+      <div class="alert alert-success alert-dismissible" *ngIf="successful_delete"> 
+        <strong>Se eliminó el producto de su carrito correctamente!</strong> 
+      </div>
+    </div>
+  </div>
+</div>

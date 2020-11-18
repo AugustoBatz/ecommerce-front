@@ -1,0 +1,86 @@
+
+    <div id="carouselhome" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselhome" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselhome" data-slide-to="1"></li>
+        <li data-target="#carouselhome" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox" aria-label="carousel-item">
+        <!-- Slide 1-->
+        <div class="carousel-item active lozad" style="background-image: url('../../../../assets/carousel/car.jpg')">
+          <div class="carousel-caption d-sm-none d-sm-block">
+            <a routerLink="/store"><h1>Catálogo</h1></a>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item lozad" style="background-image: url('../../../../assets/carousel/car1.jpg')">
+          <div class="carousel-caption d-sm-none d-sm-block">
+            <a routerLink="/about"><h1>Nosotros</h1></a>
+          </div>
+        </div>
+        <!-- Slide 3-->
+        <div class="carousel-item lozad" style="background-image: url('../../../../assets/carousel/car2.jpg')">
+          <div class="carousel-caption d-sm-none d-sm-block" style="display:inline-block; text-align: center;">
+            <div class="container">
+              <a routerLink="/contact-us"><h1>Contacto</h1></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#carouselhome" role="button" aria-label="control-prev" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselhome" role="button" aria-label="control-next" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+      <section id="product-one">
+        <div class="container">
+          <h2 class="section-title">NUESTROS PRODUCTOS</h2>
+          <div class="row">
+            <div class="col">
+                <h3>ZAPATOS</h3>
+                <h5>{{content.pr_1}}</h5>
+            </div>
+            <div class="col">
+              <img [src]="content.img_1" class="lozad img-fluid" alt="modelo">
+            </div>
+          </div>
+          <br>
+        </div>
+      </section>
+      <section id="product-two">
+        <div class="container">
+          <br>
+          <div class="row">
+            <div class="col">
+              <img [src]="content.img_2" class="lozad img-fluid" alt="modelo">
+            </div>
+            <div class="col">
+                <h3>ROPA</h3>
+                <h5>{{content.pr_2}}</h5>
+            </div>
+          </div>
+          <br>
+        </div>
+      </section>
+      <section id="product-three">
+        <div class="container">
+          <br>
+          <div class="row">
+            <div class="col">
+              <h3>ACCESORIOS</h3>
+              <h5>{{content.pr_3}}</h5>
+            </div>
+            <div class="col">
+              <img [src]="content.img_3" class="lozad img-fluid" alt="modelo">
+            </div>
+          </div>
+          <br>
+        </div>
+      </section>
+

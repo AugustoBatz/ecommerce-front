@@ -1,0 +1,54 @@
+<section id="title">
+  <div class="container">
+    <h2>Perfil</h2>
+  </div>
+</section>
+<section>
+  <div class="form-row" style="margin-right: 0; margin-left: 0;">
+    <div id="left-panel-wrapper" class="col-md-3 custom-panel">
+      <div id="left-panel" style="background-image: url('./assets/clothes3.jpg');"></div>
+    </div>
+    <div id="right-panel-wrapper" class="col-md-9 custom-panel">
+      <div id="right-panel">
+
+        <div id = "username-tag">
+          <h4>{{this.data.user.username}}</h4>
+        </div>
+
+        <div class = "info-row">
+          <div class="info-label">
+            <h4>Nombre:</h4>
+          </div>
+          <label class="custom-input">{{this.data.user.first_name}}  {{this.data.user.last_name}}</label>
+        </div>
+        <div class = "info-row">
+          <div class="info-label">
+            <h4>Correo:</h4>
+          </div>
+          <label class="custom-input">{{this.data.user.email}}</label>
+        </div>
+        <div class = "info-row">
+          <div class="info-label">
+            <h4>Teléfono:</h4>
+          </div>
+          <label class="custom-input">{{this.data.user.phone}}</label>
+        </div>
+        <div class = "info-row">
+          <div class="info-label">
+            <h4>Dirección:</h4>
+          </div>
+          <label class="custom-input">{{this.data.user.address_a}}</label>
+        </div>
+        <div class = "info-row">
+          <div class="info-label">
+            <h4>Ciudad:</h4>
+          </div>
+          <label class="custom-input">{{this.data.user.address_b}}</label>
+        </div>
+        <div id="button-wrapper">
+          <button routerLink="/profile/edit" id="edit-button">Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

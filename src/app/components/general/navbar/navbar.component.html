@@ -1,0 +1,37 @@
+<nav class="navbar navbar-light bg-light navbar-expand-lg">
+  <a class="navbar-brand ml-5" routerLink="/home">Pro-In Shop <i class="fab fa-shopify"></i></a>
+  <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarToggler">
+    <div class="navbar-nav ml-auto">
+    <a class="nav-link" routerLink="/home">Inicio</a>
+    <a class="nav-link" routerLink="/store">Cátalogo</a>
+    <a class="nav-link" routerLink="/about">Sobre Nosotros</a>
+    <a class="nav-link mr-2" routerLink="/contact-us">Contáctenos</a>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" [(ngModel)]="search" name="search" (change)="searchProduct()" placeholder="Buscar">
+      <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="searchProduct()">Buscar</button>
+    </form>
+    <a class="btn btn-outline-dark ml-2 notification " *ngIf="logged()" routerLink="/cart" type="button"  aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="badge" >{{getItems()}}</span>
+    </a>
+    <div class="dropdown mr-5 ml-2">
+       <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="!logged()">
+        <i class="fas fa-address-card"></i> Ingresar
+      </button>
+      <button class="btn btn-outline-dark dropdown-toggle expand" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="logged()">
+        <i class="fas fa-user-circle"></i> {{this.api.user}} 
+      </button>
+      <div class="dropdown-menu mr-5" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item mr-5" routerLink="/sign-in"*ngIf="!logged()"> <i class="fas fa-sign-in-alt"></i> Iniciar Sesion</a>
+        <a class="dropdown-item" routerLink="/sign-up"*ngIf="!logged()"> <i class="fas fa-user-plus"></i> Registrarse </a>
+        <a class="dropdown-item mr-5" routerLink="/profile" *ngIf="logged()"> <i class="fas fa-user"></i> Perfil</a>
+        <a class="dropdown-item mr-5" routerLink="/history" *ngIf="logged()"> <i class="fas fa-history"></i> Historial</a>
+        <a class="dropdown-item" routerLink="/home"*ngIf="logged()" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+      </div>
+    </div>
+  </div>
+  </div>
+</nav>

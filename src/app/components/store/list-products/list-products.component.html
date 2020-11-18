@@ -1,0 +1,26 @@
+<section id="product-header">
+    <div class="container">
+      <h2>Catálogo</h2>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="form-row" style="margin-right: 0; margin-left: 0;">
+            <div class="col-md-3 custom-column center-form-elements" style="width: 12rem;" *ngFor="let item of catalog">
+                <div class="custom-card">
+                    <div class = "custom-container">
+                        <img [src]="item.image" class="card-img-top custom-card-img">
+                        <a class="custom-card-button" (click)="set_product(item.code)">Comprar</a>
+                    </div>
+                    <div class="card-body card-text">
+                        <h5>{{item.name}}</h5>
+                        <p>Marca: {{item.brand}}</p>
+                        <p>Disponibles: {{item.stock}}</p>
+                        <p>Categoría: {{item.category}}</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+      
+</section>

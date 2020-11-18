@@ -1,0 +1,17 @@
+<form [formGroup]="signInForm"  *ngIf="!logged()" class="align-middle">
+    <br><br>
+    <div class="container" id="login-form">
+        <div id= "login-form-title">
+            <h2>Ingreso de usuario</h2>
+        </div>
+        <label>Nombre de usuario</label>
+        <input class="signUpInput" type="text" placeholder="Nombre de usuario" formControlName="username">
+        <label>Contraseña</label>
+        <input class="signUpInput" type="password" placeholder="Contraseña" formControlName="password">
+        <button class="btn btn-danger mb-4" type="submit" [disabled]="signInForm.invalid" (click)="validation()">Ingresar</button>
+        <label style="color: red;" *ngIf="!this.correct_login">Datos de ingreso incorrectos</label>
+    </div>
+</form>
+<div class="container" *ngIf="logged()">
+<h1 style="text-align: center;"> <i class="fas fa-skull"></i> Usted ya ha iniciado sesión, para ingresar con un nuevo usuario cierre sesión. <i class="fas fa-skull"></i></h1>
+</div>

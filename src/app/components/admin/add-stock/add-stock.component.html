@@ -1,0 +1,131 @@
+<section id="adds-stock-header">
+  <div class="container">
+    <h2>Agregar productos a inventario</h2>
+  </div>
+</section>
+<div id="main-page">
+    <div id="main-header">
+        <h3>Agregar a inventario:</h3>
+    </div>
+    <form id="first-form">
+        <div class="form-row">
+            <div class="col-md-3 mb-3 form-first-row first-component">
+                <h5>Nombre</h5>
+            </div>
+            <div class="col-md-2 mb-3 form-first-row">
+                <h5>Color</h5>
+            </div>
+            <div class="col-md-2 mb-3 form-first-row">
+                <h5>Talla</h5>
+            </div>
+            <div class="col-md-2 mb-3 form-first-row last-component">
+                <h5>Cantidad</h5>
+            </div>
+            <div class="col-md-2 mb-3 form-first-row last-component">
+                <h5>Añadir</h5>
+            </div>
+        </div>
+    </form>
+
+
+    <form id="main-data-form" *ngFor="let product of product_list">
+        <div class="custom-row" >
+            <div class="container">
+                <div class="col center-box-text">
+                    <h5>Producto: {{product.code}}</h5>
+                    <img class="img-thumbnail" [src]="product.image" style="max-width: 120px;" alt="producto">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter" (click)="set_currentProduct(product)">
+                        <i class="fas fa-plus-circle"></i> Agregar Subproducto
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="custom-row" *ngFor="let subproduct of product.subproducts; let i = index">
+            <div class ="form-row front-card-design" >
+                <div class="col-md-2 ml-5 mb-2 center-box-text">
+                    <h5>{{product.name}}</h5>
+                </div>
+                <div class="col-md-2 ml-5 mb-2 center-box-text">
+                    <h5>{{subproduct.color}}</h5>
+                </div>
+                <div class="col-md-2 ml-4 mb-2 center-box-text">
+                    <h5>{{subproduct.size}}</h5>
+                </div>
+                <div class="col-md-2 ml-4 mb-2 center-box-text">
+                    <h5>{{subproduct.quantity}}</h5>
+                </div>
+                <div class="col-md-2 mb-3 center-box-text">
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" [attr.href]="'#collapse_'+ subproduct.id" aria-expanded="false" [attr.aria-controls]="subproduct.id" >
+                       <i class="fas fa-plus-circle"></i> Agregar Stock
+                    </button>
+                </div>
+            </div>
+            <div class="collapse" id="{{'collapse_' + subproduct.id}}">
+                <div class="card card-body colapsable-background">
+                    <div class ="form-row">
+                        <div class="col-md-3 mb-3 center-box-text">
+                            <label for="subid">ID</label>
+                            <input type="number" placeholder="id" #id value="{{subproduct.id}}" name="id" disabled="true" id="subid" class="input-colapsable">
+                        </div>
+                        <div class="col-md-3 mb-3 center-box-text">
+                            <label for="quantity">Cantidad</label>
+                            <input type="number" placeholder="Cantidad" #quantity value="0" id="quantity" name="quantity"  class="input-colapsable">
+                        </div>
+                        <div class="col-md-3 mb-3 center-box-text">
+                            <label for="price">Costo Q.</label>
+                            <input type="number" placeholder="Precio" id="price" #cost value="0" name="cost" class="input-colapsable">
+                        </div>
+                        <div class="col-md-3 mb-3 center-box-text">
+                            <button class="form-button second-button" (click)="sendData(subproduct.id)">Confirmar <i class="fas fa-check"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="custom-row" *ngIf="product.subproducts.length == 0">
+            <div class ="form-row front-card-design" >
+                <div class="col-md-3 mb-3 center-box-text">
+                    <h5>No hay sub-productos registrados</h5>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header container" style="background: #80BFF5">
+            <h5 class="modal-title  ml-auto mr-auto" id="exampleModalLongTitle" style="text-align: center; color: white;">Nombre: {{current_product.name}}
+                <br>Código: {{current_product.code}}<br>
+                <br><img class="img-thumbnail" [src]="current_product.image" style="max-width: 120px;" alt="producto">
+            </h5>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row ml-auto mr-auto">
+                    <div class="col ml-auto mr-auto">
+                        <form [formGroup]="sub_productForm">
+                            <label for="product-id" style="color: black;">Código de Producto</label>
+                            <input type="text" class="form-control" disabled="true" formControlName="code_product" id="product-id">
+                            <label for="subproduct-color" style="color: black;">Color</label>
+                            <input type="text" class="form-control" formControlName="color" id="subproduct-color" placeholder="Color">
+                            <label for="subproduct-size" style="color: black;">Talla</label>
+                            <input type="text" class="form-control" formControlName="size" id="subproduct-size" placeholder="Talla">
+                            <label for="subproduct-price" style="color: black;">Precio Q.</label>
+                            <input type="number" class="form-control" formControlName="price" id="subproduct-price" placeholder="Precio">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" [disabled]="sub_productForm.invalid" (click)="insert_subProduct()">Confirmar <i class="fas fa-check"></i></button>
+        </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,163 @@
+img {
+  max-width: 100%;
+  filter: grayscale(100%);
+}
+img:hover {
+  filter: grayscale(0%);
+}
+
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.card-columns .card {
+  display: inline-block;
+  width: 100%;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px !important;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+h1 {
+  color: #d62828;
+  padding-bottom: 16%;
+  font-size: 200px;
+  opacity: 100%;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+h1:hover {
+  color: #fcbf49;
+}
+
+h2 {
+  font-size: 4.5rem;
+}
+
+h3 {
+  color: #eae2b7;
+}
+
+#gallery h2 {
+  color: white;
+  -webkit-text-stroke: 1.5px #d62828;
+}
+
+#product-one {
+  background: #d62828;
+}
+#product-one h2 {
+  color: #d62828;
+  -webkit-text-stroke: 1.5px #eae2b7;
+}
+#product-one p {
+  color: #eae2b7;
+}
+
+#product-two {
+  background: #003049;
+}
+#product-two h2 {
+  color: #003049;
+  -webkit-text-stroke: 1.5px #eae2b7;
+}
+#product-two p {
+  color: #eae2b7;
+  text-align: right;
+}
+#product-two h3 {
+  text-align: right;
+}
+
+#product-three {
+  background: #fcbf49;
+}
+#product-three h2 {
+  color: #fcbf49;
+  -webkit-text-stroke: 1.5px #eae2b7;
+}
+#product-three p {
+  color: #eae2b7;
+}
+
+.section-title {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+footer {
+  background: #353940;
+  height: 60px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+footer p {
+  text-align: center;
+  color: white;
+}
+
+/* Extra small devices (phones, 600px and down) */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 3rem;
+    -webkit-text-stroke: 1px;
+    text-align: center;
+    padding-bottom: 45%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  h1 {
+    font-size: 2rem;
+    -webkit-text-stroke: 0.5px;
+    text-align: center;
+    padding-bottom: 45%;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  h1 {
+    font-size: 5rem;
+    padding-bottom: 35%;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 6rem;
+    padding-bottom: 45%;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  h1 {
+    font-size: 10.5rem;
+    font-size-padding-bottom: 45%;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  h1 {
+    padding-bottom: 12%;
+  }
+}

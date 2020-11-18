@@ -1,0 +1,31 @@
+<section id="clients-header">
+    <div class="container">
+      <h2>Clientes</h2>
+    </div>
+</section>
+<section>
+    <form id="body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">País</th>
+              </tr>
+              <tr *ngFor="let client of client_list"> 
+                <td>{{client.first_name}}</td>
+                <td>{{client.last_name}}</td>
+                <td>{{client.username}}</td>
+                <td>{{client.email}}</td>
+                <td>{{client.phone}}</td>
+                <td>{{client.address_a}}</td>
+                <td>{{client.address_b}}</td>
+              </tr>
+            </thead>
+          </table>
+    </form>
+</section>

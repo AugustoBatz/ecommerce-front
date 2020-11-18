@@ -1,0 +1,61 @@
+<div class="container">
+  <h1>Historial de Compra:</h1>
+  <br>
+  <div class="row content-align-center">
+      <div class="col">
+          <label for="initialdate">Fecha Inicial</label>
+          <input type="date" id="initialdate" [(ngModel)]="date_start" name="initialdate" (change)="datePickedStart()" min="2020-11-10" class="form-control">
+          <label for="enddate">Fecha Final</label>
+          <input type="date" id="enddate" [(ngModel)]="date_finish" name="enddate" (change)="datePickedFinish()" class="form-control" min="2020-11-16" >
+          <br>
+          <button class="btn btn-warning ml-auto mr-auto" (click)="generateHistory()">Ver Historial de Compra</button>
+          <br>
+
+      </div>
+  </div>
+  <h2 class="ml-auto mr-auto">Compras: </h2>
+  <br>
+  <div class="row" *ngFor="let register of history">
+      <br>
+      <div class="col">
+            <table class="table">
+              <thead class="thead bg-warning">
+                <tr class="bg-warning content-align-center" style="width: 100%;">
+                  <th>Fecha: {{reformatDate(register.date)}}</th>
+                  <th></th> 
+                  <th></th>
+                  <th>Dirección:</th>
+                  <th>{{register.address}}</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th scope="col">Código</th>
+                  <th scope="col">Producto</th>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Color</th>
+                  <th scope="col">Talla</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">SubTotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let detail of register.sale_detail">
+                  <th>{{detail.code}}</th>
+                  <th>{{detail.product}}</th>
+                  <th>{{detail.brand}}</th>
+                  <th>{{detail.details.color}}</th>
+                  <th>{{detail.details.size}}</th>
+                  <th>{{detail.details.quantity}}</th>
+                  <th>Q.{{detail.details.price}}</th>
+                  <th>Q.{{detail.details.sub_total}}</th>
+                </tr>
+              </tbody>
+            </table>
+          
+      </div>
+  </div>
+  <h2 *ngIf="history.length == 0 && generated">No tiene ninguna compra registrada en estas fechas</h2>
+</div>

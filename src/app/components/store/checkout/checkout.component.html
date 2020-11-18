@@ -1,0 +1,94 @@
+<div class="container">
+    <br>
+    <br>
+    <div class="row align-items-center ">
+        <div class="col">
+            <h2 class="card-title ">Productos a comprar:</h2>
+            <div class="card bg-warning" >
+                <div class="card-body">
+                  <h6 class="card-subtitle mb-2 text-muted" style="color: white;">Usuario: {{user}}</h6>
+                  <div class="container">
+                    <table class="table" style="max-width: 90%;">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Talla</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of this.cart.items">
+                            <td>{{item.product_detail.name}}</td>
+                            <td>{{item.product_detail.color}}</td>
+                            <td class="ml-5">{{item.product_detail.size}}</td>
+                            <td class="pl-4">{{item.quantity}}</td>
+                            <td>Q.{{item.price}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                  <h3 class="mr-auto">Total: Q.{{this.cart.sub_total}}</h3>
+                </div>
+              </div>
+        </div>
+        <div class="col">   
+            <h2>Datos de usuario</h2>
+            <div class="card" >
+                <div class="card-body">
+                  <h5 class="card-title ">Productos a comprar:</h5>
+                  <h5 class="card-subtitle mb-2 text-muted" style="color: white;">Nombre: {{current_user.first_name}} {{current_user.last_name}}</h5>
+                  <h5 class="card-subtitle mb-2 text-muted" style="color: white;">Phone: {{current_user.phone}}</h5>
+                  <h5 class="card-subtitle mb-2 text-muted" style="color: white;">País: {{current_user.address_b}}</h5>
+                  <h5 class="card-subtitle mb-2 text-muted" style="color: white;">Dirección de envío: {{deliver_address}}</h5>
+                  <label for="address"><b>Ingresa la dirección a la que enviaremos tu pedido.</b></label>
+                  <label *ngIf="!address_change">Esta es la dirección asociada a tu cuenta, si quieres modificarla puedes hacerlo aquí abajo</label>
+                  <input type="text" id="address" (change)="address_change = true" [(ngModel)]="current_user.address_a" name="address" class="form-control"> 
+                  <br>
+                  <button class="btn btn-warning" (click)="changeAddress()">Confirmar Dirección</button>
+                  <br>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+            <br>
+            <button type="button" class="btn btn-success btn-lg" data-target="#confirmationModal" data-toggle="modal">Comprar</button>
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="alert alert-success alert-dismissible">
+                        <a  class="close" data-dismiss="modal" aria-label="close">&times;</a>
+                        <strong>Success!</strong> Indicates a successful or positive action.
+                    </div>
+                </div>
+            </div>
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="text-align: center;">Confirmación de Compra</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+             <div class="modal-body ml-auto mr-auto">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success ml-4" data-dismiss="modal" (click)="makeSale()" >Confirmar Compra</button>
+            </div>
+        </div>
+     </div>
+</div>
