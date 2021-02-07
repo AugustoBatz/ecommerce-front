@@ -1,2 +1,2 @@
-Front-end projecto to Ecommerce
+Front-end project to Ecommerce
 Test 
